@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/layoutPanel.css">
+    <link rel="stylesheet" href="/style/adminPanel.css">
+    <link rel="shortcut icon" href="/assets/Svg/Argia2.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Argia - Home</title>
+</head>
+
+<body>
+    <div class="darkmode-switch-box" onclick="switchmode()">
+        <label class="darkmode-switch">
+            <input id="darkmode-checkbox" type="checkbox" checked>
+            <div class="planet">
+            </div>
+            <div class="elements">
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+            </div>
+        </label>
+        <span id="darkmode-label">switch to dark mode</span>
+    </div>
+    <header>
+        <div>
+            <img src="/assets/Svg/Argia2.svg">
+            <h1>Ai</h1>
+        </div>
+
+        <div class="button-box">
+            <div class="sub-box">
+                <button><a href="./logout">Logout</a></button>
+            </div>
+        </div>
+
+    </header>
+
+    <aside class="sidenav">
+        <div class="Profile-sidebar">
+            <span><img src="assets/userAssets/menprofile.jpg" alt=""></span>
+            <span th:text="${session.Person.username}"></span>
+            <span th:text="${session.Person.role}"></span>
+        </div>
+        <div class="Polygon-message">
+            <ul class="Ph-description">
+                <li><span th:text="'First name : '+${session.Person.first_name}"></span> </li>
+                <li><span th:text="'Last name : '+${session.Person.last_name}"></span></li>
+                <li><span th:text="'Username : '+${session.Person.username}"></span> </li>
+                <li><span th:text="'place of birth : '+${session.Person.place_of_birth}"></span> </li>
+            </ul>
+        </div>
+        <ul class="main-buttons">
+
+            <li>
+                <img src="assets/icons/list.svg" alt="">
+                Users
+                <ul class="hidden">
+                    <li id="showUser">Show users</li>
+                    <li>Add user</li>
+                    <li>delete User</li>
+                    <li>Edit User </li>
+                </ul>
+            </li>
+            <li>
+                <img src="assets/icons/course.svg" alt="">
+                Courses
+                <ul class="hidden">
+                    <li>Avalaible Courses</li>
+                    <li>recommend Courses</li>
+                </ul>
+            </li>
+            <li>
+                <img src="assets/icons/schedule.svg" alt="">
+                Scheduler
+                <ul class="hidden">
+                    <li>show schedules</li>
+                    <li>add schedule</li>
+                    <li>delete schedule</li>
+                    <li>update schedule</li>
+                </ul>
+            </li>
+            <li>
+                <img src="assets/icons/groups.svg" alt="">
+                Groups
+                <ul class="hidden">
+                    <li>Join Group</li>
+                    <li>create group</li>
+                    <li>delete group</li>
+                </ul>
+            </li>
+
+        </ul>
+    </aside>
+
+    <main>
+
+        <div class="navigation">
+            <div class="filter">
+                <div class="drop-down">
+                    <label for="sort">Sort by :</label>
+
+                    <select name="sort" id="sort">
+                        <option value="name">first name</option>
+                        <option value="name2">last name</option>
+                    </select>
+
+                    <label for="sort">display :</label>
+
+                    <select name="sort" id="sort">
+                        <option value="name3">All Types</option>
+                        <option value="name">Student</option>
+                        <option value="name2">Teacher</option>
+                    </select>
+                    <select name="sort" id="sort">
+                        <option value="name3">All Gender</option>
+                        <option value="name">Male</option>
+                        <option value="name2">Female</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="search">
+                <input required="" type="search" class="input light-table-filter" data-table="order-table" />
+                <div class="icon">
+                    <img src="assets/icons/search.svg" alt="">
+                </div>
+            </div>
+
+            <div class="AddUser">
+                <div class="AddUserIcon">
+                    <p>Add User</p>
+                    <img src="assets/icons/user-add.svg" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div class="table-wrapper">
+            <table class="fl-table order-table " id="data_table">
+
+                <thead>
+                    <tr>
+                        <th class="action0">first Name </th>
+                        <th>last Name</th>
+                        <th>Username</th>
+                        <th>Type</th>
+                        <th class="action"></th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    <tr th:each="user : ${student_list}" th:attr="id = ${user.id}" id="student_list">
+                        <td id="FirstName" th:text="${user.first_name}"></td>
+                        <td id="LastName" th:text="${user.last_name}"></td>
+                        <td id="username" th:text="${user.username}"></td>
+                        <td id="role" th:text="${user.role}"></td>
+                        <td class="hidden_info" id="password" th:text="${user.password}"></td>
+                        <td class="hidden_info" id="place_of_birth" th:text="${user.place_of_birth}"></td>
+                        <td class="hidden_info" id="date_of_birth" th:text="${user.date_of_birth}"></td>
+
+                        <td class="hidden_info" id="grade" th:text="${user.grade}"></td>
+                        <td class="hidden_info" id="label" th:text="${user.label}"></td>
+
+                        <input type="hidden" th:attr="value = ${user.id}" name="user_id" id="user_id">
+                        <td>
+                            <button id="deleteUser" onclick="delete_popup()" onmouseover="hundle_delete()"><img
+                                    src="assets/icons/user-delete.svg" width="30px" alt="" srcset=""></button>
+                            <button id="editUser" onclick="edit_form()" onmouseover="hundle_edit() "><img
+                                    src="assets/icons/user-update.svg" width="30px" alt="" srcset=""></button>
+                        </td>
+                    </tr>
+                    <tr th:each="user : ${teacher_list}" th:attr="id = ${user.id}">
+                        <td id="FirstName" th:text="${user.first_name}"></td>
+                        <td id="LastName" th:text="${user.last_name}"></td>
+                        <td id="username" th:text="${user.username}"></td>
+                        <td id="role" th:text="${user.role}"></td>
+                        <td class="hidden_info" id="password" th:text="${user.password}"></td>
+                        <td class="hidden_info" id="place_of_birth" th:text="${user.place_of_birth}"></td>
+                        <td class="hidden_info" id="date_of_birth" th:text="${user.date_of_birth}"></td>
+
+                        <td class="hidden_info" id="hiringDate" th:text="${user.hiringDate}"></td>
+                        <td class="hidden_info" id="degree" th:text="${user.degree}"></td>
+
+                        <td>
+                            <button id="deleteUser" onclick="delete_popup()" onmouseover="hundle_delete()"><img
+                                    src="assets/icons/user-delete.svg" width="30px" alt="" srcset=""></button>
+                            <button id="editUser" onclick="edit_form()" onmouseover="hundle_edit() "><img
+                                    src="assets/icons/user-update.svg" width="30px" alt="" srcset=""></button>
+                        </td>
+                    </tr>
+
+
+
+                </tbody>
+            </table>
+        </div>
+        <div class="addUserForm">
+            <img src="assets/icons/close.svg" width="40px" onclick="closeform()" alt="" srcset="">
+
+            <div class="drop-down d2">
+                <label for="sort">User Type</label>
+
+                <select name="sort" id="sort_role">
+                    <option value="teacher" id="teacher_role">Teacher</option>
+                    <option value="student">Student</option>
+                </select>
+            </div>
+            <form class="AddStudentForm" method="post" modelAttribute="newPerson" action="/AdminDashboard/addUser">
+                <input type="hidden" name="role" id="user_role">
+                <div class="side0">
+                    <label for="First">First Name</label>
+                    <input name="first_name" id="FirstName_Addform" type="text" required>
+                    <label for="Last">Last Name</label>
+                    <input name="last_name" id="LastName_Addform" type="text" required>
+                    <label for="place_of_birth">place_of_birth</label>
+                    <input name="place_of_birth" id="Adress_Addform" type="text" required>
+
+                    <label for="date_of_birth">date_of_birth</label>
+                    <input name="date_of_birth" id="date_of_birth" type="date" required>
+                </div>
+                <div class="side1">
+                    <label for="Password">Password</label>
+                    <input name="password" id="Password_Addform" type="password" required>
+                    <label for="CFPassword">Confirm Password</label>
+                    <input name="CFPassword" id="Password_AddformCf" type="password" required>
+                    <label for="Username">Username</label>
+                    <input name="username" id="Phone_Addform" type="text" required>
+                    <div class="gender">
+                        <div class="male">
+                            <label for="male">Male</label>
+                            <input type="radio" name="gender" id="male" value="M" checked>
+                        </div>
+                        <div class="female">
+                            <label for="female">Female</label>
+                            <input type="radio" name="gender" id="female" value="F">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div style="display: none;" class="studentAdd">
+                    <div class="side0">
+                        <div class="drop-down d2">
+                            <label for="sort">Class</label>
+
+                            <select name="sort" id="sort_class">
+                                <option value="GRP1">GRP1</option>
+                                <option value="GRP2">GRP2</option>
+                                <option value="GRP3">GRP3</option>
+                            </select>
+                        </div>
+                    </div>
+                    <input type="hidden" id="student_class" name="student_class">
+                    <input type="hidden" id="student_degree" name="student_degree">
+                    <div class="side0">
+                        <div class="drop-down d2">
+                            <label for="sort">Degree</label>
+
+                            <select name="sort" id="sort_degree">
+                                <option value="L3">L3</option>
+                                <option value="L2">L2</option>
+                                <option value="L1">L1</option>
+                            </select>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="teacherInfoAdd" style="display: none;">
+                    <div class="col">
+                        <div class="drop-down d2 ">
+                            <label for="sort">Grade</label>
+
+                            <select name="sort" id="sort_grade">
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <label for="hiring_date">Hiring date : </label>
+                        <input type="date" name="hiring_date" id="hiring_date">
+                        <input type="hidden" id="teacher_grade" name="teacher_grade">
+                    </div>
+                    <div class="col">
+                        <div class="drop-down d2 sortLevel ">
+                            <label for="sort">level</label>
+
+                            <select name="sort" id="sort_level" onchange="update_sort_levelV2()">
+                                <option value="L3">L3</option>
+                                <option value="L2">L2</option>
+                                <option value="L1">L1</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP1</label>
+                                <input type="checkbox" name="class_list" id="grp1" value="grp1">
+                            </div>
+                            <div class="dropD2" th:with="level=3">
+                                <label for="sort">Courses</label>
+
+                                <select name="sort" id="sort_courses_grp1">
+
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_courses" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_courses" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+
+
+
+                                    <!-- <option value="dac">dac</option>
+                                    <option value="gl2">gl2</option> -->
+                                </select>
+                            </div>
+                            <input type="hidden" id="course_grp1" name="course_grp1">
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP2</label>
+                                <input type="checkbox" name="class_list" id="grp2" value="grp2">
+                            </div>
+                            <div class="dropD2">
+                                <label for="sort">Courses</label>
+
+                                <select name="sort" id="sort_courses_grp2">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_courses" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_courses" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" id="course_grp2" name="course_grp2">
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP3</label>
+                                <input type="checkbox" name="class_list" id="grp3" value="grp3">
+                            </div>
+                            <div class="dropD2">
+                                <label for="sort">Courses</label>
+
+                                <select name="sort" id="sort_courses_grp3">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_courses" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_courses" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" id="course_grp3" name="course_grp3">
+                        </div>
+
+                        <input type="hidden" name="teaching_level" id="teaching_level">
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="button-box">
+                    <div class="sub-box">
+                        <button type="submit" style="display: none;" id="Add_UserBTN" value="Add user">Add User</button>
+                        <a class="next">Next</a>
+                        <a style="display: none;" id="return_btn" onclick="return_btn()">Return</a>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+
+        <form class="editForm" action="/AdminDashboard/updateStudent" method="post">
+            <img src="assets/icons/close.svg" onclick="closeform()" alt="" srcset="">
+            <section style="display: flex;">
+                <div class="cote1">
+                    <input type="text" id="Id_form" name="id_student">
+                    <!-- <input type="text" id="Type_form"> -->
+
+                    <label for="First">First Name</label>
+                    <input name="first_name" id="FirstName_form" type="text"><br>
+
+                    <label for="Last">Last Name</label>
+                    <input name="last_name" id="LastName_form" type="text"><br>
+
+                    <label for="place_of_birth">Place of birth </label>
+                    <input name="place_of_birth" id="place_of_birth_form" type="text">
+                    <div class="drop-down d2">
+                        <label for="sort">Class</label>
+
+                        <select name="sort" id="student_class_edited_Full">
+                            <option value="GRP1" id="sort_class_edited">GRP1</option>
+                            <option value="GRP2" id="sort_class_edited">GRP2</option>
+                            <option value="GRP3" id="sort_class_edited">GRP3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="cote2">
+
+                    <label for="date_of_birth">date of birth </label>
+                    <input name="date_of_birth" id="date_of_birth_form" type="date"><br>
+
+                    <label for="password">Password</label>
+                    <input name="password" id="Password_form" type="password"><br>
+
+                    <label for="username">Username</label>
+                    <input name="username" id="username_form" type="text"><br>
+
+                    <input type="hidden" name="grade" id="grade_form">
+                    <input type="hidden" name="class_name" id="class_name_editF">
+                    <div class="drop-down d2">
+                        <label for="sort">Degree</label>
+
+                        <select name="sort" id="sort_degree_edited_Full">
+                            <option id="sort_degree_edited" value="L3">L3</option>
+                            <option id="sort_degree_edited" value="L2">L2</option>
+                            <option id="sort_degree_edited" value="L1">L1</option>
+                        </select>
+                    </div>
+
+                </div>
+            </section>
+            <div class="button-box">
+                <div class="sub-box">
+                    <button onmouseover="hundleUpdate()">Update user</button>
+                </div>
+            </div>
+        </form>
+
+        <form class="editForm" action="/teacherProfile" method="post">
+            <img src="assets/icons/close.svg" onclick="closeform()" alt="" srcset="">
+            <section style="display: flex;height: 420px;" class="edit_feild">
+                <div class="cote1">
+                    <input type="text" id="Id_form" name="id_teacher">
+                    <label for="First">First Name</label>
+                    <input name="first_name" id="FirstName_form" type="text"><br>
+
+                    <label for="Last">Last Name</label>
+                    <input name="last_name" id="LastName_form" type="text"><br>
+
+                    <label for="place_of_birth">Place of birth </label>
+                    <input name="place_of_birth" id="place_of_birth_form" type="text">
+
+                </div>
+                <div class="cote2">
+
+                    <label for="date_of_birth">date of birth </label>
+                    <input name="date_of_birth" id="date_of_birth_form" type="date"><br>
+
+                    <label for="password">Password</label>
+                    <input name="password" id="Password_form" type="password"><br>
+
+                    <label for="username">Username</label>
+                    <input name="username" id="username_form" type="text"><br>
+
+
+
+
+                </div>
+            </section>
+            <div class="groupe_editing" style="display: none;">
+                <div class="grp">
+                    <div>
+                        <label for="">GRP1</label>
+                        <input type="checkbox" name="class_list" id="grp1" value="grp1">
+                    </div>
+                    <div class="drop-down d2" th:with="level=3">
+                        <label for="sort">Courses</label>
+
+                        <select name="sort" id="sort_courses_grp1">
+
+                            <div th:each="course : ${L3_courses}">
+                                <option class="l3_courses" th:attr="value = ${course.label}" th:text="${course.label}">
+                                </option>
+                            </div>
+
+                            <div th:each="course : ${L2_courses}">
+                                <option class="l2_courses" style="display: none;" th:attr="value = ${course.label}"
+                                    th:text="${course.label}">
+                                </option>
+                            </div>
+
+
+
+                            <!-- <option value="dac">dac</option>
+                            <option value="gl2">gl2</option> -->
+                        </select>
+                    </div>
+                    <input type="hidden" id="course_grp1" name="course_grp1">
+                </div>
+                <div class="grp">
+                    <div>
+                        <label for="">GRP2</label>
+                        <input type="checkbox" name="class_list" id="grp2" value="grp2">
+                    </div>
+                    <div class="drop-down d2">
+                        <label for="sort">Courses</label>
+
+                        <select name="sort" id="sort_courses_grp2">
+                            <div th:each="course : ${L3_courses}">
+                                <option class="l3_courses" th:attr="value = ${course.label}" th:text="${course.label}">
+                                </option>
+                            </div>
+                            <div th:each="course : ${L2_courses}">
+                                <option class="l2_courses" style="display: none;" th:attr="value = ${course.label}"
+                                    th:text="${course.label}">
+                                </option>
+                            </div>
+                        </select>
+                    </div>
+                    <input type="hidden" id="course_grp2" name="course_grp2">
+                </div>
+                <div class="grp">
+                    <div>
+                        <label for="">GRP3</label>
+                        <input type="checkbox" name="class_list" id="grp3" value="grp3">
+                    </div>
+                    <div class="drop-down d2">
+                        <label for="sort">Courses</label>
+
+                        <select name="sort" id="sort_courses_grp3">
+                            <div th:each="course : ${L3_courses}">
+                                <option class="l3_courses" th:attr="value = ${course.label}" th:text="${course.label}">
+                                </option>
+                            </div>
+                            <div th:each="course : ${L2_courses}">
+                                <option class="l2_courses" style="display: none;" th:attr="value = ${course.label}"
+                                    th:text="${course.label}">
+                                </option>
+                            </div>
+                        </select>
+                    </div>
+                    <input type="hidden" id="course_grp3" name="course_grp3">
+                </div>
+
+                <input type="hidden" name="teaching_level" id="teaching_level">
+            </div>
+            <div class="button-box">
+                <div class="sub-box">
+                    <button type="submit" onmouseover="hundleUpdate_teacher()">Update
+                        user</button>
+                    <!-- <a class="next_2" onclick="hundle_next()">Next</a>
+                    <a style="display: none;" id="return_btn" onclick="return_btn()">Return</a> -->
+                </div>
+            </div>
+        </form>
+
+        <div class="deletePopup">
+            <form action="/AdminDashboard/delete" method="post">
+
+                <img src="assets/icons/close.svg" onclick="closeform()" alt="" srcset="">
+                <section>
+                    <input type="hidden" id="id_person" name="id_person">
+                    <h2>Are u sure u want to delete thois user</h2>
+                    <div class="button-box">
+                        <div class="sub-box">
+                            <button>delete</button>
+                        </div>
+                    </div>
+                </section>
+            </form>
+        </div>
+
+    </main>
+
+    <footer>
+        <div> <span> &copy; </span> Ai </div>
+        <img src="/assets/icons/up-arrow.svg" alt="" onclick="viewdetails()">
+        <section class="details">
+            <ul class="social-media">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+                <li class="icon github">
+                    <span class="tooltip">Github</span>
+                    <span class="span"><i class="fab fa-github"></i></span>
+                </li>
+                <li class="icon youtube">
+                    <span class="tooltip">Youtube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </ul>
+            <ul class="more-details">
+                <span>Ali menjeli ,Constantine ,Algeria</span>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>+21355487456</span>
+                <i class="fas fa-phone"></i>
+            </ul>
+        </section>
+    </footer>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="/scripts//profileDetails.js"></script>
+    <script src="/scripts/Admin.js"></script>
+    <script src="/scripts/footer.js"></script>
+</body>
+
+</html>

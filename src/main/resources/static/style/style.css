@@ -1,0 +1,794 @@
+:root {
+    /* COLORS */
+    --text-color: #676767;
+    --border-color: #31aec5;
+    /*represents border+text color of form */
+    --form-background: linear-gradient(225deg, #b2d4e3, #d4fbff);
+    --form-shadow: #b3cdda;
+    --background-color:
+        /* #ecf8fe */
+        #d7f3f8
+        /*#c6ebfc*/
+    ;
+    --brandname-text-color: #4d95a2;
+    --hover-links-color: #ff8a00;
+
+    /*DARK MODE SWITCH*/
+    --bg-planet-bright: #F2C94C;
+    --bg-planet-shadow: #828894;
+    --bg-planet-lightshadow: #D7D7D820;
+    --dot-size: 0.25rem;
+
+    /*in case u need to chane svg files use figma*/
+
+    /*LAYOUT*/
+    --form-button-width: 150px;
+
+    /*FONTS*/
+    --form-font: koulen;
+    --brand-font: aleovera;
+}
+
+@font-face {
+    font-family: koulen;
+    src: url(/assets/Fonts/Koulen-Regular.ttf);
+}
+
+* figcaption,
+h1 {
+    cursor: default;
+}
+
+:root.darkmode {
+    /* DARKMOde COlORS */
+    --text-color: #e6e6e6;
+    --border-color: #41dada;
+    /*represents border+text color of form */
+    --form-background: linear-gradient(225deg, #255265, #007986);
+    --form-shadow: #253f4c;
+    --background-color: #0f4e59;
+    --brandname-text-color: #41dada;
+    /*change color*/
+    --hover-links-color: #e88b22;
+}
+
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+}
+
+/*--------------------DARKMODE SWITCH------------------*/
+
+html main {
+    background-color: var(--background-color);
+    transition: background-color 400ms ease;
+}
+
+@keyframes span-show {
+    0% {
+        letter-spacing: -0.4em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes span-hide {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        letter-spacing: -0.4em;
+        opacity: 0;
+    }
+}
+
+.darkmode-switch-box {
+    margin-top: 30px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 3.5vw;
+}
+
+.darkmode-switch-box span {
+    /*label for button */
+    position: fixed;
+    left: 5.7vw;
+    margin-top: 3px;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 1.4em;
+    color: var(--text-color);
+    animation: both span-hide 400ms;
+}
+
+.darkmode-switch-box:hover span {
+    animation: both span-show 400ms;
+    transform: scale(1);
+}
+
+.darkmode-switch {
+    width: 50px;
+    cursor: pointer;
+    position: relative;
+}
+
+.darkmode-switch input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.darkmode-switch .planet {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: radial-gradient(3.75em, 99%, transparent 100%);
+    background-color: var(--bg-planet-bright);
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 400ms ease;
+}
+
+.darkmode-switch .planet::after {
+    content: "";
+    background-color: var(--bg-planet-shadow);
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    border-radius: 50%;
+    will-change: opacity, transform, background-color;
+    opacity: 0;
+    transform: translate(2em, -2em);
+    transition: opacity 400ms ease, transform 400ms ease, background-color 400ms ease;
+}
+
+.darkmode-switch .elements {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -19.5px;
+    left: -20.5px;
+    transition: transform 400ms ease;
+}
+
+.darkmode-switch .elements svg {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    opacity: 1;
+    transition: transform 400ms ease, opacity 200ms ease, width 200ms ease, height 200ms ease;
+}
+
+.darkmode-switch .elements svg circle {
+    fill: var(--bg-planet-bright);
+    transition: fill 400ms ease;
+}
+
+.darkmode-switch .elements svg:first-child {
+    transform: translate(1.8em, 0.50em);
+}
+
+.darkmode-switch .elements svg:nth-child(2) {
+    transform: translate(2.7em, 0.9em);
+}
+
+.darkmode-switch .elements svg:nth-child(3) {
+    transform: translate(3em, 1.8em);
+}
+
+.darkmode-switch .elements svg:nth-child(4) {
+    transform: translate(2.7em, 2.6em);
+}
+
+.darkmode-switch .elements svg:nth-child(5) {
+    transform: translate(1.8em, 3em);
+}
+
+.darkmode-switch .elements svg:nth-child(6) {
+    transform: translate(0.9em, 2.6em);
+}
+
+.darkmode-switch .elements svg:nth-child(7) {
+    transform: translate(0.6em, 1.8em);
+}
+
+.darkmode-switch .elements svg:nth-child(8) {
+    transform: translate(0.8em, 0.85em);
+}
+
+.darkmode-switch input:checked+.planet {
+    --bg-planet-bright: #D7D7D8;
+}
+
+.darkmode-switch input:checked+.planet::after {
+    opacity: 1;
+    transform: translate(0.6em, -0.5em);
+}
+
+.darkmode-switch input:checked~.elements {
+    transform: rotate(180deg);
+}
+
+.darkmode-switch input:checked~.elements svg:first-child {
+    transform: translate(2em, 1em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(2) {
+    transform: translate(3em, 1.5em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(3) {
+    transform: translate(3em, 2em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(4) {
+    transform: translate(3em, 2em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(5) {
+    transform: translate(1.9em, 2.6em);
+    width: 0.3em;
+    height: 0.3em;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(5) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(6) {
+    transform: translate(1.4em, 2.5em);
+    width: 0.3em;
+    height: 0.3em;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(6) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(7) {
+    transform: translate(1.1em, 1.6em);
+    width: 0.7em;
+    height: 0.7em;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(7) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(8) {
+    width: 0.45em;
+    height: 0.45em;
+    transform: translate(1.7em, 2.1em);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(8) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+/*-------------------HEADER SECTION----------------------*/
+
+@font-face {
+    font-family: aleovera;
+    src: url(/assets/Fonts/Aloevera-OVoWO.ttf);
+}
+
+header {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header div {
+    display: flex;
+    margin-left: 15px;
+    margin-top: 8px;
+}
+
+header img {
+    width: 70px;
+}
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+header h1 {
+    width: 135px;
+    margin: 10px 0 0 10px;
+    font-family: var(--brand-font);
+    color: var(--brandname-text-color);
+    font-weight: lighter;
+    font-size: 40px;
+    background-image: linear-gradient(to left, #31aec5 0%, #971bfe 40%, #ff8a00 70%, #61dc36 90%, #31aec5 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 12s linear infinite;
+    animation-fill-mode: backwards;
+    animation-delay: 5s;
+}
+
+/*----------------------------------------BODY SECTION------------------------*/
+
+main {
+    font-family: var(--form-font);
+    background-color: var(--background-color);
+    display: flex;
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+}
+
+.images-box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 60%;
+    height: 50vh;
+    margin-top: 100px;
+    flex-direction: row-reverse;
+}
+
+.images-box img {
+    width: 45vh;
+}
+
+.images-box figcaption {
+    color: var(--text-color);
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.images-box figure:nth-child(1) figcaption {
+    transform: translate(0px, -15px);
+}
+
+.images-box figure:nth-child(2) figcaption {
+    transform: translate(0px, -45px);
+}
+
+.images-box figure:nth-child(3) figcaption {
+    transform: translate(70px, -45px);
+}
+
+.forms-card {
+    width: 500px;
+    height: 500px;
+    perspective: 500px;
+    margin-top: 15vh;
+    margin-right: 120px;
+}
+
+.content {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+
+form {
+    position: absolute;
+    border-radius: 20px;
+    border: var(--brandname-text-color) 8px inset;
+    background-color: var(--form-background);
+    box-shadow: inset -19px 19px 5px var(--form-shadow),
+        inset 19px -19px 5px var(--form-shadow),
+        inset -19px -19px 5px var(--form-shadow);
+    width: inherit;
+    height: inherit;
+    transition: all 400ms;
+}
+
+.login-box,
+.signup-box {
+    position: relative;
+    margin: auto;
+}
+
+
+.inputs-box {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputs-box input {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px #fff solid;
+    margin-bottom: 30px;
+    display: block;
+    width: 200px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    font-size: 15px;
+    transform: scale(1.3);
+    color: var(--text-color);
+}
+
+input:focus,
+input:valid {
+    outline: 0;
+    border-bottom-color: var(--border-color);
+}
+
+.content label {
+    font-size: 15px;
+    position: absolute;
+    left: 117px;
+    pointer-events: none;
+}
+
+.login-box label[for=email] {
+    top: 15px;
+}
+
+
+.login-box label[for=password] {
+    top: 88px;
+}
+
+.signup-box label[for=email] {
+    top: 90px;
+}
+
+.signup-box label[for=password] {
+    top: 165px;
+}
+
+.signup-box label[for=name] {
+    top: 16px;
+}
+
+
+.inputs-box label span {
+    display: inline-block;
+    font-size: 1.5em;
+    min-width: 5px;
+    color: var(--text-color);
+    transition: 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.inputs-box input:focus+label span,
+input:valid+label span {
+    color: var(--border-color);
+}
+
+.login-box .inputs-box input:focus+label span,
+.login-box input:valid+label span {
+    transform: translateY(-35px);
+}
+
+.signup-box .inputs-box input:focus+label span,
+.signup-box input:valid+label span {
+    transform: translateY(-40px);
+}
+
+.forgot-pass {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.forgot-pass a {
+    text-decoration: none;
+    color: var(--border-color);
+    transition: all 0.3s;
+}
+
+.forgot-pass a:hover {
+    color: var(--hover-links-color);
+    transition: all 0.3s;
+}
+
+.button-box {
+    display: flex;
+    justify-content: center;
+}
+
+.sub-box {
+    position: absolute;
+    color: var(--border-color);
+    z-index: 1;
+    bottom: -80px;
+}
+
+.login-box .sub-box {
+    bottom: -80px;
+}
+
+.signup-box .sub-box {
+    bottom: -60px;
+}
+
+.sub-box::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    top: -7px;
+    left: -7px;
+    z-index: -5;
+    border-top: 3px solid var(--border-color);
+    border-left: 3px solid var(--border-color);
+    transition: 0.5s;
+    border-top-left-radius: 15px;
+}
+
+.sub-box::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    bottom: -7px;
+    right: -7px;
+    z-index: -5;
+    border-right: 3px solid var(--border-color);
+    border-bottom: 3px solid var(--border-color);
+    transition: 0.5s;
+    border-bottom-right-radius: 15px;
+}
+
+.sub-box:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.sub-box:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.sub-box button {
+    font-family: var(--form-font);
+    width: var(--form-button-width);
+    padding: 0px;
+    font-size: 22px;
+    background: transparent;
+    border: var(--text-color) 3px solid;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+    transform: scale(1);
+}
+
+.sub-box button:hover {
+    background-color: var(--hover-links-color);
+    color: white;
+    border-color: white;
+    transition: all 0.3s;
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
+.forms-card .sub-text {
+    cursor: default;
+    text-align: center;
+    font-size: 1.5em;
+    color: var(--text-color);
+}
+
+.login-box .sub-text {
+    margin-top: 0px;
+}
+
+.signup-box .sub-text {
+    margin-top: 40px;
+}
+
+.sub-text span {
+    cursor: pointer;
+    color: var(--border-color);
+    transition: all 0.3s;
+}
+
+.sub-text span:hover {
+    transition: all 0.3s;
+    color: var(--hover-links-color);
+}
+
+.front,
+.back {
+    position: absolute;
+    backface-visibility: hidden;
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+
+/*footer section */
+
+footer a {
+    text-decoration: none;
+}
+
+footer {
+    position: absolute;
+    width: 90vw;
+    bottom: 5px;
+    height: 52px;
+    border-radius: 20px;
+    bottom: 2.5vh;
+    cursor: default;
+    background-color: var(--brandname-text-color);
+    transition: all 0.4s;
+    font-family: koulen;
+    overflow: hidden;
+    margin-left: 2vw;
+    z-index: 10;
+}
+
+footer div {
+    color: var(--background-color);
+    text-align: center;
+}
+
+footer div {
+    font-family: aleovera;
+    font-weight: 400;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+footer img {
+    transition: all 300ms;
+    cursor: pointer;
+    width: 40px;
+    position: relative;
+    bottom: 45px;
+    left: 70px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+}
+
+.more-details {
+    display: inline-flex;
+}
+
+.more-details span {
+    transition: all 400ms;
+    transform: scale(0);
+    color: var(--background-color);
+    margin-top: 15px;
+    font-size: 1.3em;
+    transform-origin: bottom right;
+}
+
+.social-media {
+    display: inline-flex;
+    list-style: none;
+}
+
+
+.social-media .icon,
+.more-details i {
+    transition: all 500ms;
+    transform: scale(0);
+    transform-origin: bottom;
+    position: relative;
+    background: var(--background-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    padding: 10px;
+    margin: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-media .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-media .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-media .icon:hover .tooltip {
+    top: -55px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.social-media .icon:hover span,
+.social-media .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.social-media .facebook:hover,
+.social-media .facebook:hover .tooltip,
+.social-media .facebook:hover .tooltip::before {
+    background: #1877F2;
+    color: #ffffff;
+}
+
+.social-media .twitter:hover,
+.social-media .twitter:hover .tooltip,
+.social-media .twitter:hover .tooltip::before {
+    background: #1DA1F2;
+    color: #ffffff;
+}
+
+.social-media .instagram:hover,
+.social-media .instagram:hover .tooltip,
+.social-media .instagram:hover .tooltip::before {
+    background: #E4405F;
+    color: #ffffff;
+}
+
+.social-media .github:hover,
+.social-media .github:hover .tooltip,
+.social-media .github:hover .tooltip::before {
+    background: #333333;
+    color: #ffffff;
+}
+
+.social-media .youtube:hover,
+.social-media .youtube:hover .tooltip,
+.social-media .youtube:hover .tooltip::before {
+    background: #CD201F;
+    color: #ffffff;
+}

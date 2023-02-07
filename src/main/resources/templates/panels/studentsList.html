@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/layoutPanel.css">
+    <link rel="stylesheet" href="./style/profPanel.css">
+    <link rel="shortcut icon" href="/assets/Svg/Argia2.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Argia - Home</title>
+</head>
+
+<body>
+    <div class="darkmode-switch-box" onclick="switchmode()">
+        <label class="darkmode-switch">
+            <input id="darkmode-checkbox" type="checkbox" checked>
+            <div class="planet">
+            </div>
+            <div class="elements">
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+            </div>
+        </label>
+        <span id="darkmode-label">switch to dark mode</span>
+    </div>
+    <header>
+        <div>
+            <img src="/assets/Svg/Argia2.svg">
+            <h1>Ai</h1>
+        </div>
+
+        <div class="button-box">
+            <div class="sub-box">
+                <button><a href="./logout">Logout</a></button>
+            </div>
+        </div>
+
+    </header>
+    <!-- th:switch="${user.role} -->
+    <!-- <aside class="sidenav">
+        <div class="Profile-sidebar">
+            <span><img src="assets/userAssets/menprofile.jpg" alt=""></span>
+            <span th:text="${session.Person.username}"></span>
+            <span th:text="${session.Person.role}"></span>
+        </div>
+        <div class="Polygon-message">
+            <ul class="Ph-description">
+                <li><span th:text="'First name = '+${session.Person.first_name}"></span> </li>
+                <li><span th:text="'Last name = '+${session.Person.last_name}"></span></li>
+                <li><span th:text="'place of birth = '+${session.Person.place_of_birth}"></span> </li>
+                <div th:switch="${session.Person.role}">
+                    <div th:case="'teacher'">
+                        <li><span th:text="'Grade = '+${teacher.degree}"></span> </li>
+                        <li><span th:text="'Hiring date  = '+${teacher.hiringDate}"></span> </li>
+
+                    </div>
+                   we need attribute about admin mm controller 
+                    <div th:case="'admin'">
+                        <li><span th:text="'Grade = '+${teacher.degree}"></span> </li>
+                        <li><span th:text="'Hiring date  = '+${teacher.hiringDate}"></span> </li> 
+                    </div> 
+                </div>
+            </ul>
+        </div>
+        <ul class="main-buttons">
+            <li>
+                <img src="/assets/icons/dashboard.svg" alt="">
+                Dashboard
+                <ul class="hidden">
+                    <li>overview</li>
+                    <li>blogs</li>
+                    <li>courses</li>
+                    <li>Marks</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/list.svg" alt="">
+                Students
+                <ul class="hidden">
+                    <li id="showUser" onclick="showstudents()">Show students</li>
+                    <li>Add student</li>
+                    <li>delete student</li>
+                    <li>Edit student</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/schedule.svg" alt="">
+                Scheduler
+                <ul class="hidden">
+                    <li onclick="showschedule()">show schedule</li>
+                    <li>add schedule</li>
+                    <li>delete schedule</li>
+                    <li>update schedule</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/task.svg" alt="">
+                Tasks
+                <ul class="hidden">
+                    <li>show tasks</li>
+                    <li>add task</li>
+                    <li>update task</li>
+                    <li>delete task</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/groups.svg" alt="">
+                Groups
+                <ul class="hidden">
+                    <li>Join Group</li>
+                    <li>create group</li>
+                    <li>delete group</li>
+                </ul>
+            </li>
+
+        </ul>
+    </aside> -->
+    <aside th:include="panels/fragments/teacherSideBar :: sidebar" class="sidenav">
+
+    </aside>
+    <main>
+
+        <div class="navigation">
+            <div class="filter">
+                <div class="drop-down">
+                    <label for="sort">Sort by :</label>
+
+                    <select name="sort" id="sort">
+                        <option value="name">first name</option>
+                        <option value="name2">last name</option>
+                    </select>
+
+                    <label for="sort">display :</label>
+
+                    <select name="sort" id="sort">
+                        <option value="name3">All sections</option>
+                        <option value="name">Gl</option>
+                        <option value="name2">ti</option>
+                        <option value="name2">sci</option>
+                        <option value="name2">si</option>
+                    </select>
+                    <select name="sort" id="sort">
+                        <option value="name3">All Gender</option>
+                        <option value="name">Male</option>
+                        <option value="name2">Female</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="search">
+                <input required="" type="search" class="input light-table-filter" data-table="order-table" />
+                <div class="icon">
+                    <img src="/assets/icons/search.svg" alt="">
+                </div>
+            </div>
+
+            <!-- <div class="AddUser" onclick="add_row();">
+                <div class="AddUserIcon">
+                    <p>Add student</p>
+                    <img src="/assets/icons/user-add.svg" alt="">
+                </div>
+            </div> -->
+
+        </div>
+
+        <div class="table-wrapper">
+            <table class="fl-table order-table " id="data_table">
+
+                <thead>
+                    <tr>
+                        <th class="action0">First Name </th>
+                        <th>Last name</th>
+                        <th>Group</th>
+                        <th>Section</th>
+                        <th class="action"></th>
+                    </tr>
+                </thead>
+
+
+                <tbody>
+
+                    <tr id="User1" th:each="student : ${studentsList}">
+                        <td id="Name1" th:text="${student.first_name}"></td>
+                        <td id="lname1" th:text="${student.last_name}"></td>
+                        <td id="mail1" th:text="${student.Grade}"></td>
+                        <td id="type1" th:text="${student.label}"></td>
+
+                        <div th:switch="${session.Person.role}">
+                            <td>
+                                <div th:case="'admin'">
+                                    <button id="deleteUser" class="delete" onclick="delete_row('1')"><img
+                                            src="/assets/icons/user-delete.svg" width="30px" alt="" srcset=""></button>
+                                    <button id="save_button1" style="display: none;" class="save"
+                                        onclick="save_row('1')"><img src="/assets/icons/user-save.svg" width="30px"
+                                            alt="" srcset=""></button>
+                                    <button id="editUser1" class="edit" onclick="edit_row('1')"><img
+                                            src="/assets/icons/user-update.svg" width="30px" alt="" srcset=""></button>
+                                </div>
+
+                            </td>
+                        </div>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <div> <span> &copy; </span> Ai </div>
+        <img src="/assets/icons/up-arrow.svg" alt="" onclick="viewdetails()">
+        <section class="details">
+            <ul class="social-media">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+                <li class="icon github">
+                    <span class="tooltip">Github</span>
+                    <span class="span"><i class="fab fa-github"></i></span>
+                </li>
+                <li class="icon youtube">
+                    <span class="tooltip">Youtube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </ul>
+            <ul class="more-details">
+                <span>Ali menjeli ,Constantine ,Algeria</span>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>+21355487456</span>
+                <i class="fas fa-phone"></i>
+            </ul>
+        </section>
+    </footer>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="/scripts/profileDetails.js"></script>
+    <script src="/scripts/Prof.js"></script>
+    <script src="/scripts/footer.js"></script>
+</body>
+
+</html>

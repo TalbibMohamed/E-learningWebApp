@@ -1,0 +1,73 @@
+<aside th:fragment="sidebar" class="sidenav">
+    <div class="Profile-sidebar">
+        <span><img src="assets/userAssets/menprofile.jpg" alt=""></span>
+        <span th:text="${session.Person.username}"></span>
+        <span th:text="${session.Person.role}"></span>
+        <span style="display: none;" id="teacher_id" th:text="${session.Person.id}"></span>
+    </div>
+    <div class="Polygon-message">
+        <ul class="Ph-description">
+            <li><span th:text="'First name = '+${session.Person.first_name}"></span> </li>
+            <li><span th:text="'Last name = '+${session.Person.last_name}"></span></li>
+            <li><span th:text="'place of birth = '+${session.Person.place_of_birth}"></span> </li>
+            <li><span th:text="'Grade = '+${teacher.degree}"></span> </li>
+            <li><span th:text="'Hiring date  = '+${teacher.hiringDate}"></span> </li>
+        </ul>
+    </div>
+    <ul class="main-buttons">
+        <li>
+            <img src="/assets/icons/dashboard.svg" alt="">
+            Dashboard
+            <ul class="hidden">
+                <li onclick="showDashboard()">overview</li>
+                <li>blogs</li>
+                <li>courses</li>
+                <li>Marks</li>
+            </ul>
+        </li>
+        <li>
+            <img src="/assets/icons/list.svg" alt="">
+            Students
+            <ul class="hidden">
+                <li id="showUser" onclick="showstudents()">Show students</li>
+                <li>Add student</li>
+                <li>delete student</li>
+                <li>Edit student</li>
+            </ul>
+        </li>
+        <li>
+            <img src="/assets/icons/course.svg" alt="">
+            courses
+            <ul class="hidden">
+                <li onclick="showcourses()">show courses</li>
+            </ul>
+        </li>
+        <li>
+            <img src="/assets/icons/schedule.svg" alt="">
+            Scheduler
+            <ul class="hidden">
+                <li id="showUser" onclick="showschedule()">Show schedule</li>
+            </ul>
+        </li>
+        <li>
+            <img src="/assets/icons/task.svg" alt="">
+            Tasks
+            <ul class="hidden">
+                <li>show tasks</li>
+                <li>add task</li>
+                <li>update task</li>
+                <li>delete task</li>
+            </ul>
+        </li>
+        <li>
+            <img src="/assets/icons/groups.svg" alt="">
+            Groups
+            <ul class="hidden">
+                <li>Join Group</li>
+                <li>create group</li>
+                <li>delete group</li>
+            </ul>
+        </li>
+
+    </ul>
+</aside>

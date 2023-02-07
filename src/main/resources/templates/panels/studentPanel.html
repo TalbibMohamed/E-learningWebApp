@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/layoutPanel.css">
+    <link rel="stylesheet" href="/style/studentPanel.css">
+    <link rel="shortcut icon" href="/assets/Svg/Argia2.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Argia - Home</title>
+</head>
+
+<body>
+    <div class="darkmode-switch-box" onclick="switchmode()">
+        <label class="darkmode-switch">
+            <input id="darkmode-checkbox" type="checkbox" checked>
+            <div class="planet">
+            </div>
+            <div class="elements">
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+            </div>
+        </label>
+        <span id="darkmode-label">switch to dark mode</span>
+    </div>
+    <header>
+        <div>
+            <img src="/assets/Svg/Argia2.svg">
+            <h1>Ai</h1>
+        </div>
+
+        <div class="button-box">
+            <div class="sub-box">
+                <button><a href="./logout">Logout</a></button>
+            </div>
+        </div>
+
+    </header>
+
+    <aside class="sidenav">
+        <div class="Profile-sidebar">
+            <span><img src="/assets/userAssets/menprofile.jpg" alt=""></span>
+            <span th:text="${session.Person.username}"></span>
+            <span th:text="${session.Person.role}"></span>
+        </div>
+        <div class="Polygon-message">
+            <ul class="Ph-description">
+                <li><span th:text="'First name = '+${session.Person.first_name}"></span> </li>
+                <li><span th:text="'Last name = '+${session.Person.last_name}"></span></li>
+                <li><span th:text="'Degree = '+${student.grade}"></span> </li>
+                <li><span th:text="'place of birth = '+${session.Person.place_of_birth}"></span> </li>
+                <li><span th:text="'Class = '+${className}"></span> </li>
+            </ul>
+        </div>
+        <ul class="main-buttons">
+            <li>
+                <img src="/assets/icons/dashboard.svg" alt="">
+                Dashboard
+                <ul class="hidden">
+                    <li>overview</li>
+                    <li>blogs</li>
+                    <li>courses</li>
+                    <li>Marks</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/course.svg" alt="">
+                Courses
+                <ul class="hidden">
+                    <li>join Courses</li>
+                    <li>recommend course</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/schedule.svg" alt="">
+                Scheduler
+                <ul class="hidden">
+                    <li>show schedule</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/task.svg" alt="">
+                Tasks
+                <ul class="hidden">
+                    <li>New tasks</li>
+                    <li>finished tasks</li>
+                    <li>missed tasks</li>
+                </ul>
+            </li>
+            <li>
+                <img src="/assets/icons/groups.svg" alt="">
+                Groups
+                <ul class="hidden">
+                    <li>Join Group</li>
+                    <li>create group</li>
+                    <li>delete group</li>
+                </ul>
+            </li>
+
+        </ul>
+    </aside>
+
+    <main>
+        <section>
+            <div class="module" th:each=" course: ${courses}">
+                <menu>
+                    <menuitem id="demo1">
+                    <div class="Module-profile">
+                        <img src="/assets/modulesIcons/SPM.svg" width="48px" alt="" srcset="">
+                        <a class="PF-Title" th:text="${course.get(0).full_label}"></a>
+                        <a class="PF-Teacher">M.Lekhdara</a>
+                    </div>
+                    <menu class="module_attribute">
+                        <menuitem class="cours menuitem">
+                        <a class="items">cours</a>
+                        <menu class="module_att_desc" th:each=" courseContent: ${course.get(1)}">
+                            <menuitem>
+                            <div th:each=" courseContent: ${course.get(1)}">
+                                <a class="items" th:href="${courseContent.file_path}"
+                                    th:text="${courseContent.getChapterName()}"></a>
+                            </div></a></menuitem>
+                            <!-- il manque les list de tp et de td pour chaque module -->
+                        </menu>
+                        </menuitem>
+                        <menuitem>
+                        <a class="items">TD</a>
+                        <menu class="module_att_desc">
+                            <menuitem>
+                            <div th:each=" courseContent: ${course.get(3)}">
+                                <a class="items" th:href="${courseContent.file_path}"
+                                    th:text="${courseContent.getChapterName()}"></a>
+                            </div></a></menuitem>
+
+                        </menu>
+                        </menuitem>
+                        <menuitem>
+                        <a class="items"> TP</a>
+                        <menu class="module_att_desc">
+                            <menuitem>
+                            <div th:each=" courseContent: ${course.get(2)}">
+                                <a class="items" th:href="${courseContent.file_path}"
+                                    th:text="${courseContent.getChapterName()}"></a>
+                            </div></a></menuitem>
+
+                        </menu>
+                        </menuitem>
+
+                        </menuitem>
+                    </menu>
+                    </menuitem>
+                </menu>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div> <span> &copy; </span> Ai </div>
+        <img src="/assets/icons/up-arrow.svg" alt="" onclick="viewdetails()">
+        <section class="details">
+            <ul class="social-media">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+                <li class="icon github">
+                    <span class="tooltip">Github</span>
+                    <span class="span"><i class="fab fa-github"></i></span>
+                </li>
+                <li class="icon youtube">
+                    <span class="tooltip">Youtube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </ul>
+            <ul class="more-details">
+                <span>Ali menjeli ,Constantine ,Algeria</span>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>+21355487456</span>
+                <i class="fas fa-phone"></i>
+            </ul>
+        </section>
+    </footer>
+    <script src="/scripts/Student.js"></script>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="/scripts/profileDetails.js"></script>
+    <script src="/scripts/footer.js"></script>
+</body>
+
+</html>

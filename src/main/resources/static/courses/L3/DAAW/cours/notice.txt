@@ -1,0 +1,4 @@
+foreign key in schedule mast references from teach table . 
+table schedule must change 
+/////
+  khass nzid les module ta3 l1 fi la list des module 

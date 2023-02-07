@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" th:href="@{/style/style.css}">
+  <link rel="shortcut icon" href="/assets/Svg/Argia2.svg" type="image/x-icon">
+  <script th:src="@{/scripts/home/script.js}"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+  <title>E-learning - Welcome to Argia</title>
+</head>
+
+<body>
+
+  <header>
+    <div>
+      <img src="/assets/Svg/Argia2.svg">
+      <h1>Ai</h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="darkmode-switch-box" onclick="switchmode()">
+      <label class="darkmode-switch">
+        <input id="darkmode-checkbox" type="checkbox" checked>
+        <div class="planet">
+        </div>
+        <div class="elements">
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+          <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="250" r="200" />
+          </svg>
+        </div>
+      </label>
+      <span id="darkmode-label">switch to dark mode</span>
+    </div>
+
+    <div class="images-box">
+      <figure>
+        <img src="/assets/Svg/online-learning.svg" alt="online-learning">
+        <figcaption>Online Learning</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/Svg/share-link.svg" alt="share-link">
+        <figcaption>Sharing Recources</figcaption>
+      </figure>
+      <figure>
+        <img src="/assets/Svg/online-browsing.svg" alt="online-browsing">
+        <figcaption>Browse Knowledge</figcaption>
+      </figure>
+    </div>
+
+    <div class="forms-card">
+      <div class="content">
+
+        <form class="front" method="post" action="/Login">
+          <div class="login-box">
+            <div class="inputs-box">
+              <input type="value" required name="username">
+              <label for="email">
+                <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">m</span><span
+                  style="transition-delay:100ms">a</span><span style="transition-delay:150ms">i</span><span
+                  style="transition-delay:200ms">l </span>
+              </label>
+
+              <input type="password" required name="password">
+
+              <label for="password">
+                <span style="transition-delay:0ms">P</span><span style="transition-delay:50ms">a</span><span
+                  style="transition-delay:100ms">s</span><span style="transition-delay:150ms">s</span><span
+                  style="transition-delay:200ms">w</span><span style="transition-delay:250ms">o</span><span
+                  style="transition-delay:300ms">r</span><span style="transition-delay:350ms">d</span>
+              </label>
+            </div>
+
+            <p class="forgot-pass"><a href="">I forgot my Password</a></p>
+            <p class="sub-text">I don't have an account , <span onclick="flipcard()">Sign Up</span></p>
+
+            <div class="button-box">
+              <div class="sub-box">
+                <button type="submit">Login</button>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <form class="back">
+          <div class="signup-box">
+            <div class="inputs-box">
+
+              <input type="value" required="">
+              <label for="name">
+                <span style="transition-delay:0ms">N</span><span style="transition-delay:50ms">a</span><span
+                  style="transition-delay:100ms">m</span><span style="transition-delay:200ms">e</span>
+              </label>
+
+              <input type="value" required="">
+              <label for="email">
+                <span style="transition-delay:0ms">E</span><span style="transition-delay:50ms">m</span><span
+                  style="transition-delay:100ms">a</span><span style="transition-delay:150ms">i</span><span
+                  style="transition-delay:200ms">l </span>
+              </label>
+
+              <input type="password" required="">
+              <label for="password">
+                <span style="transition-delay:0ms">P</span><span style="transition-delay:50ms">a</span><span
+                  style="transition-delay:100ms">s</span><span style="transition-delay:150ms">s</span><span
+                  style="transition-delay:200ms">w</span><span style="transition-delay:250ms">o</span><span
+                  style="transition-delay:300ms">r</span><span style="transition-delay:350ms">d</span>
+              </label>
+            </div>
+            <p class="sub-text">I already have an account , <span onclick="flipcard()">Login</span></p>
+
+            <div class="button-box">
+              <div class="sub-box">
+                <button>Sign Up</button>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div> <span> &copy; </span> Ai </div>
+    <img src="/assets/icons/up-arrow.svg" alt="" onclick="viewdetails()">
+    <section class="details">
+      <ul class="social-media">
+        <li class="icon facebook">
+          <span class="tooltip">Facebook</span>
+          <span><i class="fab fa-facebook-f"></i></span>
+        </li>
+        <li class="icon twitter">
+          <span class="tooltip">Twitter</span>
+          <span><i class="fab fa-twitter"></i></span>
+        </li>
+        <li class="icon instagram">
+          <span class="tooltip">Instagram</span>
+          <span><i class="fab fa-instagram"></i></span>
+        </li>
+        <li class="icon github">
+          <span class="tooltip">Github</span>
+          <span class="span"><i class="fab fa-github"></i></span>
+        </li>
+        <li class="icon youtube">
+          <span class="tooltip">Youtube</span>
+          <span><i class="fab fa-youtube"></i></span>
+        </li>
+      </ul>
+      <ul class="more-details">
+        <span>Ali menjeli ,Constantine ,Algeria</span>
+        <i class="fas fa-map-marker-alt"></i>
+        <span>+21355487456</span>
+        <i class="fas fa-phone"></i>
+      </ul>
+    </section>
+  </footer>
+  <script src="../scripts/footer.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,696 @@
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.navigation .List_user {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: koulen;
+    letter-spacing: 4px;
+    font-size: 20px;
+    width: fit-content;
+    color: rgb(31, 214, 153);
+}
+
+.search {
+    display: inline-block;
+    margin: 40px 0 0 0;
+    margin-right: 20px;
+    position: absolute;
+    right: 16.2vw;
+    --size-button: 40px;
+}
+
+.search .input {
+    height: 45px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    outline: none;
+    width: 45px;
+    transition: all ease 0.3s;
+    transform: scaleX(1);
+    transform-origin: right;
+    border-radius: 50px;
+    cursor: pointer;
+    color: var(--brandname-text-color);
+    background-color: var(--searchInput);
+}
+
+.input:focus,
+.input:not(:invalid) {
+    width: 20vw;
+    cursor: text;
+    padding-right: 50px;
+    padding-left: 20px;
+}
+
+.input:focus+.icon,
+.input:not(:invalid)+.icon {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.search .icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -2.5px;
+    right: -0.5px;
+    padding: 8px;
+    pointer-events: none;
+}
+
+.container .icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 5px;
+}
+
+.drop-down {
+    position: relative;
+    top: 30px;
+    width: fit-content;
+    font-size: 30px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.drop-down label {
+    color: var(--search-button);
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.drop-down select {
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: transparent;
+    border: transparent;
+    color: rgb(31, 214, 153);
+    align-items: center;
+    border-radius: 0;
+    font-size: 20px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.drop-down select option {
+    font-size: 20px;
+    font-family: koulen;
+    background-color: var(--background-color);
+}
+
+/* end filter section */
+
+/* AddUser section */
+
+.AddUser .AddUserIcon {
+    position: relative;
+    display: flex;
+    right: 20px;
+    top: 30%;
+    z-index: 20;
+    flex-direction: row-reverse;
+    cursor: pointer;
+}
+
+.AddUser {
+    transform: scale(1);
+    transition: all 400ms ease;
+}
+
+.AddUser:hover {
+    transform: scale(0.9);
+    transform-origin: center center;
+    transition: all 400ms ease;
+}
+
+.AddUser .AddUserIcon img {
+    width: 40px;
+    margin-right: 15px;
+
+}
+
+.AddUser .AddUserIcon p {
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-family: var(--form-font);
+    font-weight: 600;
+    color: var(--side-background);
+}
+
+
+/* end AddUser section */
+
+
+/* Table list section */
+
+.table-wrapper {
+    background-color: transparent;
+    font-family: var(--form-font);
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    color: var(--text-color);
+    height: 68vh;
+    overflow-y: scroll;
+}
+
+table {
+    border-radius: 20px;
+}
+
+.fl-table button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.fl-table {
+    width: 80%;
+    margin: auto;
+    font-size: 12px;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.fl-table th {
+    letter-spacing: 3px;
+}
+
+.fl-table td,
+.fl-table th {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--table-background-color);
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 20px;
+}
+
+.fl-table tr :nth-last-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: transparent;
+    border-right: none;
+}
+
+.fl-table tbody tr :nth-child(4) {
+    border-right: none;
+}
+
+
+.fl-table thead th {
+    font-weight: bolder;
+    font-size: 20px;
+    color: #ffffff;
+    background: var(--brandname-text-color);
+}
+
+.fl-table thead :nth-child(4) {
+    border-top-right-radius: 20px;
+}
+
+.fl-table thead th:nth-of-type(4) {
+    width: 13%;
+}
+
+.fl-table thead th:nth-of-type(1),
+.fl-table thead th:nth-of-type(2) {
+    width: 25%;
+}
+
+.fl-table tbody tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: 20px;
+}
+
+
+.fl-table tbody tr:last-of-type td:nth-child(4) {
+    border-bottom-right-radius: 20px;
+}
+
+.action0 {
+    border-top-left-radius: 20px;
+}
+
+.action {
+    border-top-right-radius: 20px;
+    background-color: var(--background-color);
+    height: 40px;
+}
+
+.lastChildRight {
+    border-bottom-right-radius: 20px;
+}
+
+.lastChildLeft {
+    border-bottom-left-radius: 20px;
+}
+
+.hidden_info {
+    display: none;
+}
+
+/* end Table list section */
+
+/* edit form section */
+.editForm {
+    font-family: var(--form-font);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: auto;
+    background-color: var(--brandname-text-color);
+    width: 600px;
+    padding-top: 20px;
+    border: 8px solid var(--side-background);
+    border-radius: 40px;
+    position: absolute;
+    z-index: +14;
+    top: 6%;
+    left: 28%;
+    box-shadow: 0 0 120px 10px rgba(0, 0, 0, 0.59);
+    transform: scale(0);
+    transition: all 400ms ease;
+    pointer-events: all;
+}
+
+.deletePopup {
+    font-family: var(--form-font);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: auto;
+    background-color: var(--brandname-text-color);
+    width: 600px;
+    padding-top: 20px;
+    border: 8px solid var(--side-background);
+    border-radius: 40px;
+    position: absolute;
+    z-index: +10001;
+    top: 35%;
+    left: 28%;
+    box-shadow: 0 0 120px 10px rgba(0, 0, 0, 0.59);
+    transform: scale(0);
+    transition: all 400ms ease;
+    pointer-events: all;
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+
+.editForm label,
+.AddStudentForm label {
+    font-size: 18;
+    font-weight: bolder;
+    letter-spacing: 4px;
+    color: white;
+}
+
+main .sub-box {
+    margin-bottom: 20px;
+}
+
+main .sub-box button {
+    border: whitesmoke 3px solid;
+    color: whitesmoke;
+}
+
+main .sub-box::before {
+    display: none;
+}
+
+main .sub-box::after {
+    display: none;
+}
+
+.addUserForm input {
+    margin-bottom: 20px;
+}
+
+#Id_form,
+#Type_form {
+    display: none;
+}
+
+.editForm input,
+.AddStudentForm input {
+    margin-top: 12px;
+    padding: 20px;
+    max-width: 200px;
+    height: 20px;
+    border-radius: 20px;
+    border-color: transparent;
+    color: var(--brandname-text-color);
+    background-color: white;
+    font-size: 16px;
+    position: relative;
+    font-family: koulen;
+    letter-spacing: 4px;
+}
+
+.editForm img,
+.deletePopup img {
+    cursor: pointer;
+    width: 40px;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+
+
+.bodydisable::after {
+    content: " ";
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--disableBackground);
+}
+
+/* end edit form section */
+
+/* add user form  */
+.addUserForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    position: absolute;
+    top: 0%;
+    left: 28%;
+    z-index: +1000;
+    width: 35vw;
+    height: 75vh;
+    background-color: var(--brandname-text-color);
+    border: 8px solid var(--side-background);
+    box-shadow: 0 0 120px 10px rgba(0, 0, 0, 0.59);
+    border-radius: 40px;
+    transform: translateX(270px) translateY(-270px) scale(0);
+    transform-origin: right;
+    transition: all 400ms ease;
+    pointer-events: all;
+    font-family: var(--form-font);
+}
+
+.addUserForm .d2 {
+    position: relative;
+    top: 2.5vh;
+    padding: 0;
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+
+}
+
+.addUserForm img {
+    position: absolute;
+    top: 2%;
+    right: 3%;
+    cursor: pointer;
+}
+
+.addUserForm .d2 select,
+.addUserForm .d2 label {
+    font-size: 18px;
+}
+
+.addUserForm .d2 select {
+    color: white;
+}
+
+.addUserForm .d2 select option {
+    color: white;
+    background-color: var(--brandname-text-color);
+}
+
+.addUserForm .d2 label {
+    color: white;
+}
+
+.AddStudentForm {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    justify-content: center;
+    margin-top: 6%;
+}
+
+.AddStudentForm input {
+    width: 500px;
+}
+
+.AddStudentForm .side0,
+.AddStudentForm .side1,
+.editForm .cote1,
+.editForm .cote2 {
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    --margin: 30px;
+}
+
+.AddStudentForm .side0,
+.editForm .cote1 {
+    margin-right: var(--margin);
+}
+
+.addUserForm .side1,
+.editForm .cote2 {
+    margin-left: var(--margin);
+}
+
+/* check box  */
+.gender {
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+.gender input {
+    margin: auto;
+    padding: 0;
+    text-align: center;
+
+}
+
+.gender div {
+    margin: auto;
+    display: flex;
+    flex-direction: row-reverse;
+    margin: 10px 0 10px;
+    width: 100px;
+
+}
+
+.gender div label {
+    text-align: center;
+    margin: auto;
+    padding: 0;
+    margin-left: 10px;
+    position: relative;
+
+}
+
+
+.gender .male {
+    position: relative;
+    right: 10px;
+}
+
+.teacherInfoAdd {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.teacherInfoAdd .col {
+    margin: auto;
+    margin-top: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.teacherInfoAdd .grp {
+    display: flex;
+    flex-direction: row;
+}
+
+.teacherInfoAdd .grp>div {
+
+    flex-direction: row;
+}
+
+.teacherInfoAdd .grp>div input[type=checkbox] {
+    width: 15px;
+    position: relative;
+    top: 3px;
+    margin: 0 100px 0 10px;
+}
+
+.teacherInfoAdd label {
+    font-size: 20px;
+}
+
+.editForm .cote2 .d2 {
+    position: relative;
+    top: -12px;
+    left: 8px;
+}
+
+.editForm .cote1 .d2 {
+    position: relative;
+    top: 18px;
+    left: 8px;
+}
+
+.AddStudentForm .button-box .sub-box a,
+.editForm .button-box .sub-box a {
+    text-decoration: none;
+    font-family: var(--form-font);
+    width: var(--form-button-width);
+    padding: 0px;
+    font-size: 22px;
+    background: transparent;
+    border: whitesmoke 3px solid;
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+    transform: scale(1);
+    text-align: center;
+}
+
+.sub-box button:hover,
+.AddStudentForm .button-box .sub-box a:hover,
+.editForm .button-box .sub-box a:hover {
+    background-color: var(--hover-links-color);
+    color: white;
+    border-color: white;
+    transition: all 0.3s;
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
+#Add_UserBTN {
+    position: absolute;
+    top: 90%;
+    right: 55%;
+}
+
+#return_btn {
+    position: absolute;
+    top: 90%;
+    left: 50%;
+}
+
+.AddStudentForm .button-box .sub-box .next {
+    position: absolute;
+    top: 90%;
+    right: 40%;
+}
+
+.editForm .button-box .sub-box a {
+    position: absolute;
+    top: 90%;
+    right: 70%;
+}
+
+/* .teacherInfoAdd .side0 {
+    position: relative;
+    top: 80%;
+    right: 20%;
+
+} */
+
+/* .list_gorup {
+    display: flex;
+    flex-direction: column;
+} */
+.grp {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    padding: 0%;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'koulen';
+}
+
+.dropD2 {
+    width: fit-content;
+    font-size: 30px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.dropD2 label,
+.grp>div {
+    color: azure;
+    font-size: 23px;
+    font-weight: 600;
+
+}
+
+
+.dropD2 select {
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: transparent;
+    border: transparent;
+    color: rgb(31, 214, 153);
+    align-items: center;
+    border-radius: 0;
+    font-size: 20px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.dropD2 select option {
+    font-size: 20px;
+    font-family: koulen;
+    background-color: var(--background-color);
+
+}
+
+
+.teacherInfoAdd>div:nth-child(2) {
+    margin-top: 30px;
+}
+
+.teacherInfoAdd>div:nth-child(4) {
+    margin-top: 22px;
+}

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/layoutPanel.css">
+    <link rel="stylesheet" href="./style/profPanel.css">
+    <link rel="shortcut icon" href="/assets/Svg/Argia2.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Argia - Home</title>
+</head>
+
+<body>
+    <div class="darkmode-switch-box" onclick="switchmode()">
+        <label class="darkmode-switch">
+            <input id="darkmode-checkbox" type="checkbox" checked>
+            <div class="planet">
+            </div>
+            <div class="elements">
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+            </div>
+        </label>
+        <span id="darkmode-label">switch to dark mode</span>
+    </div>
+    <header>
+        <div>
+            <img src="/assets/Svg/Argia2.svg">
+            <h1>Ai</h1>
+        </div>
+
+        <div class="button-box">
+            <div class="sub-box">
+                <button><a href="./logout">Logout</a></button>
+            </div>
+        </div>
+
+    </header>
+
+    <aside th:include="panels/fragments/teacherSideBar :: sidebar" class="sidenav">
+
+
+    </aside>
+    <main>
+        <div id="writing-mode"  >
+            <table>
+              <tr>
+                <th style="width:30px; border-top-left-radius: 30px;"> </th>
+                <th>8:30 - 10:00</th>
+                <th>10:00 - 11:30</th>
+                <th>11:30 - 13:00</th>
+                <th>13:00 - 14:30</th>
+                <th style="border-top-right-radius: 30px;">14:30 - 16:00</th>
+              </tr>
+              <tr th:each=" s : ${schedule.entrySet()}">
+                <th th:text="${s.key}"></th>
+                <span th:each="p : ${s.value}">
+                    <td th:text="${p}"></td>
+                </span>
+             
+              </tr>
+              
+            </table>
+          </div>
+    </main>
+
+    <footer>
+        <div> <span> &copy; </span> Ai </div>
+        <img src="/assets/icons/up-arrow.svg" alt="" onclick="viewdetails()">
+        <section class="details">
+            <ul class="social-media">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+                <li class="icon github">
+                    <span class="tooltip">Github</span>
+                    <span class="span"><i class="fab fa-github"></i></span>
+                </li>
+                <li class="icon youtube">
+                    <span class="tooltip">Youtube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </ul>
+            <ul class="more-details">
+                <span>Ali menjeli ,Constantine ,Algeria</span>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>+21355487456</span>
+                <i class="fas fa-phone"></i>
+            </ul>
+        </section>
+    </footer>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="/scripts/profileDetails.js"></script>
+    <script src="/scripts/Prof.js"></script>
+    <script src="/scripts/footer.js"></script>
+</body>
+
+</html>

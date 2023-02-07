@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/layoutPanel.css">
+    <!-- <link rel="stylesheet" href="/style/adminPanel.css"> -->
+    <!-- <link rel="stylesheet" href="/style/teacherProfile.css"> -->
+    <link rel="stylesheet" href="/style/courseManagement.css">
+    <link rel="shortcut icon" href="/assets/Svg/Argia2.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Profile</title>
+</head>
+
+<body>
+    <aside th:include="panels/fragments/teacherSideBar :: sidebar" class="sidenav">
+
+    </aside>
+
+    <div class="darkmode-switch-box" onclick="switchmode()">
+        <label class="darkmode-switch">
+            <input id="darkmode-checkbox" type="checkbox" checked>
+            <div class="planet">
+            </div>
+            <div class="elements">
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+            </div>
+        </label>
+        <span id="darkmode-label">switch to dark mode</span>
+    </div>
+    <header>
+        <div>
+            <img src="/assets/Svg/Argia2.svg">
+            <h1>Ai</h1>
+        </div>
+
+        <div class="button-box">
+            <div class="sub-box">
+                <button><a href="./logout">Logout</a></button>
+            </div>
+        </div>
+
+    </header>
+    <main onmouseover="setFile_name()">
+        <div class="add_file">
+            <p>Add a File</p>
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <div>
+                    <label>Chapter Name : </label>
+                    <input type="text" name="chapter_name">
+                </div>
+                <div class="file">
+                    <label>File : </label>
+                    <label for="">
+                        <img src="assets/icons/cloud-upload.svg" alt="">
+                        <input type="file" maxlength="300000" name="fileToUpload" id="fileToUpload">
+                        <label for="" id="file_name">asd</label>
+                    </label>
+                </div>
+                <div>
+                    <div class="CourseType">
+                        <label for="course_type">File Type : </label>
+                        <div>
+                            <div>
+                                <label for="file_type">Cours</label>
+                                <input type="radio" value="Cours" name="file_type">
+                            </div>
+                            <div>
+                                <label for="file_type">TP</label>
+                                <input type="radio" value="TP" name="file_type">
+                            </div>
+                            <div>
+                                <label for="file_type">TD</label>
+                                <input type="radio" value="TD" name="file_type">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="drop-down  ">
+                        <label for="sort">Courses List :</label>
+                        <select name="sort" id="sort_courses" onchange="hundle_course()">
+                            <div th:each=" teach_1: ${teachingInfo}">
+                                <option class="l3_coursesV2" th:attr="value = ${teach_1.course_name}"
+                                    th:text="${teach_1.course_name}">
+                                </option>
+                            </div>
+
+                        </select>
+                    </div>
+                    <input type="hidden" class="course" name="course_name"
+                        th:attr="value = ${teachingInfo.get(0).course_name}">
+                </div>
+                <input type="submit" value="Submit">
+
+            </form>
+        </div>
+        <div class="table-wrapper">
+            <table class="fl-table">
+                <thead>
+                    <th class="action0">NAME</th>
+                    <th>CONTENT</th>
+                    <th class="action">TYPE</th>
+                    <th></th>
+                </thead>
+                <tbody th:each=" course: ${courses}">
+
+                    <tr th:each=" courseContent: ${course.get(1)}">
+                        <td th:text="${course.get(0).full_label}"></td>
+                        <td> <a class="items" th:href="${courseContent.file_path}"
+                                th:text="${courseContent.getChapterName()}"></a>
+                            <p style="display:none" class="items" th:text="${courseContent.file_path}"></p>
+                        </td>
+                        <td th:text="${courseContent.contentType}"></td>
+                        <td>
+                            <button id="deleteUser" onclick="deleteFile()"><img src="assets/icons/removeicon.png"
+                                    width="30px" alt="" srcset=""></button>
+                            <button onclick="download_file()">
+                                <img src="assets/icons/download.svg" width="30px" alt="" srcset=""></button>
+                        </td>
+                    </tr>
+                    <tr th:each=" courseContent: ${course.get(2)}">
+                        <td th:text="${course.get(0).full_label}"></td>
+                        <td> <a class="items" th:href="${courseContent.file_path}"
+                                th:text="${courseContent.getChapterName()}"></a>
+                            <p style="display:none" class="items" th:text="${courseContent.file_path}"></p>
+                        </td>
+                        <td th:text="${courseContent.contentType}"></td>
+                        <td>
+                            <button id="deleteUser" onclick="deleteFile()">
+                                <img src="assets/icons/removeicon.png" width="30px" alt="" srcset=""></button>
+                            <button onclick="download_file()">
+                                <img src="assets/icons/download.svg" width="30px" alt="" srcset=""></button>
+                        </td>
+                    </tr>
+                    <tr th:each=" courseContent: ${course.get(3)}">
+                        <td th:text="${course.get(0).full_label}"></td>
+                        <td> <a class="items" th:href="${courseContent.file_path}"
+                                th:text="${courseContent.getChapterName()}"></a>
+                            <p style="display:none" class="items" th:text="${courseContent.file_path}"></p>
+                        </td>
+                        <td th:text="${courseContent.contentType}"></td>
+                        <td>
+                            <button id="deleteUser" onclick="deleteFile()"><img src="assets/icons/removeicon.png"
+                                    width="30px" alt="" srcset=""></button>
+                            <button onclick="download_file()">
+                                <img src="assets/icons/download.svg" width="30px" alt="" srcset=""></button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <div class="deletePopup">
+            <img src="assets/icons/close.svg" onclick="closeform()" alt="" srcset="">
+            <form action="/deleteFile" method="post">
+                <div>
+                    <label for="file_to_delete">Do you want to delete this file </label>
+                    <input type="hidden" name="file_path" id="file_path">
+                </div>
+                <button type="submit">DELETE</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div> <span> &copy; </span> Ai </div>
+        <img src="/assets/icons/up-arrow.svg" alt="" onclick="viewdetails()">
+        <section class="details">
+            <ul class="social-media">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+                <li class="icon github">
+                    <span class="tooltip">Github</span>
+                    <span class="span"><i class="fab fa-github"></i></span>
+                </li>
+                <li class="icon youtube">
+                    <span class="tooltip">Youtube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </ul>
+            <ul class="more-details">
+                <span>Ali menjeli ,Constantine ,Algeria</span>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>+21355487456</span>
+                <i class="fas fa-phone"></i>
+            </ul>
+        </section>
+    </footer>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="/scripts//profileDetails.js"></script>
+    <!-- <script src="/scripts/Admin.js"></script> -->
+    <script src="/scripts/Prof.js"></script>
+    <script src="/scripts/footer.js"></script>
+    <!-- <script src="/scripts/teacherProfile.js"></script> -->
+    <script src="/scripts/courseManagement.js"></script>
+</body>
+
+</html>

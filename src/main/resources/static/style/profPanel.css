@@ -1,0 +1,619 @@
+.navigation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.navigation .List_user {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    font-family: koulen;
+    letter-spacing: 4px;
+    font-size: 20px;
+    width: fit-content;
+    color: rgb(31, 214, 153);
+}
+
+.search {
+    display: inline-block;
+    margin: 40px 0 0 0;
+    margin-right: 20px;
+    position: absolute;
+    right: 16vw;
+    --size-button: 40px;
+}
+
+.search input {
+    height: 45px;
+    font-size: 15px;
+    border: none;
+    color: #fff;
+    outline: none;
+    width: 45px;
+    transition: all ease 0.3s;
+    transform: scaleX(1);
+    transform-origin: right;
+    border-radius: 50px;
+    cursor: pointer;
+    color: var(--brandname-text-color);
+    background-color: var(--searchInput);
+}
+
+.search input:focus,
+.search input:not(:invalid) {
+    width: 20vw;
+    cursor: text;
+    padding-right: 50px;
+    padding-left: 20px;
+}
+
+.search input:focus+.icon,
+.search input:not(:invalid)+.icon {
+    pointer-events: all;
+    cursor: pointer;
+}
+
+.search .icon {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -2.5px;
+    right: -0.5px;
+    padding: 8px;
+    pointer-events: none;
+}
+
+.container .icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+
+.AddUser .AddUserIcon {
+    position: relative;
+    display: flex;
+    right: 20px;
+    top: 30%;
+    z-index: 20;
+    flex-direction: row-reverse;
+    cursor: pointer;
+}
+
+.AddUser .AddUserIcon img {
+    width: 40px;
+    margin-right: 15px;
+
+}
+
+.AddUser .AddUserIcon p {
+    font-size: 20px;
+    letter-spacing: 4px;
+    font-family: var(--form-font);
+    font-weight: 600;
+    color: var(--side-background);
+}
+
+.AddUser {
+    transform: scale(1);
+    transition: all 400ms ease;
+}
+
+.AddUser:hover {
+    transform: scale(0.9);
+    transform-origin: center center;
+    transition: all 400ms ease;
+}
+
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 5px;
+}
+
+.drop-down {
+    position: relative;
+    top: 30px;
+    width: fit-content;
+    font-size: 30px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.drop-down label {
+    color: var(--search-button);
+    font-size: 23px;
+    font-weight: 600;
+}
+
+.drop-down select {
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: transparent;
+    border: transparent;
+    color: rgb(31, 214, 153);
+    align-items: center;
+    border-radius: 0;
+    font-size: 20px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.drop-down select option {
+    font-size: 20px;
+    font-family: koulen;
+    background-color: var(--background-color);
+}
+
+/* end filter section */
+
+/* Table list section */
+
+.table-wrapper {
+    background-color: transparent;
+    font-family: var(--form-font);
+    width: 100%;
+    margin: auto;
+    margin-top: 10px;
+    color: var(--text-color);
+    height: 71vh;
+    overflow-y: scroll;
+}
+
+table {
+    border-radius: 20px;
+}
+
+.fl-table button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.fl-table {
+    width: 80%;
+    margin: auto;
+    font-size: 12px;
+    border-collapse: collapse;
+    white-space: nowrap;
+    margin-top: 50px;
+}
+
+.fl-table th {
+    letter-spacing: 3px;
+}
+
+.fl-table td,
+.fl-table th {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--table-background-color);
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 20px;
+}
+
+
+.fl-table tr :nth-last-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: transparent;
+}
+
+.fl-table tbody tr td:last-of-type {
+    border-right: none;
+}
+
+.fl-table tbody tr td:nth-child(4) {
+    border-right: none;
+}
+
+
+.fl-table thead th {
+    font-weight: bolder;
+    font-size: 20px;
+    color: #ffffff;
+    background: var(--brandname-text-color);
+}
+
+.fl-table thead :nth-child(4) {
+    border-top-right-radius: 20px;
+}
+
+.fl-table thead th:nth-of-type(3),
+.fl-table thead th:nth-of-type(4) {
+    width: 13%;
+}
+
+.fl-table thead th:nth-of-type(1),
+.fl-table thead th:nth-of-type(2) {
+    width: 30%;
+}
+
+.fl-table tbody tr input {
+    text-align: center;
+    height: 30px;
+    background-color: transparent;
+    border: transparent none;
+    border-bottom: black 2px solid;
+    font-size: 20px;
+    width: 80%;
+    margin: auto;
+    font-family: var(--form-font);
+}
+
+.fl-table tbody tr input:focus {
+    outline: none;
+}
+
+
+.action0 {
+    border-top-left-radius: 20px;
+}
+
+.action {
+    border-top-right-radius: 20px;
+    background-color: var(--background-color);
+    height: 40px;
+}
+
+.lastChildRight {
+    border-bottom-right-radius: 20px;
+}
+
+.lastChildLeft {
+    border-bottom-left-radius: 20px;
+}
+
+.hidden_info {
+    display: none;
+}
+
+.fl-table tbody tr:last-of-type td:nth-of-type(4) {
+    border-bottom-right-radius: 20px;
+}
+
+.fl-table tbody tr:last-of-type td:nth-of-type(1) {
+    border-bottom-left-radius: 20px;
+}
+
+/* end Table list section */
+
+
+/* user */
+
+main section {
+    width: inherit;
+    height: inherit;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    flex-direction: row;
+}
+
+
+.module {
+    font-family: var(--form-font);
+
+}
+
+
+.module menuitem {
+    position: relative;
+    display: block;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.module menuitem>menu {
+    position: absolute;
+    pointer-events: none;
+}
+
+.module>menu {
+    display: flex;
+}
+
+.module>menu>menuitem {
+    pointer-events: all;
+    opacity: 1;
+}
+
+menu menuitem .items {
+    white-space: nowrap;
+    display: block;
+
+}
+
+menuitem:hover>menu {
+    pointer-events: initial;
+}
+
+menuitem:hover>menu>menuitem,
+menu:hover>menuitem {
+    opacity: 1;
+}
+
+.module>menu>menuitem menuitem menu {
+    transform: translateX(100%);
+    top: 0;
+    right: 0;
+}
+
+.moduleForHover {
+    z-index: -1;
+}
+
+.Module-profile {
+    background: var(--brandname-text-color);
+    padding: 10px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    width: 500px;
+    min-height: 180px;
+}
+
+.Module-profile img {
+    margin-top: 10%;
+}
+
+.PF-Title {
+    font-size: 27px;
+    color: rgba(255, 255, 255, 0.982);
+    font-weight: 500;
+}
+
+.PF-Teacher {
+    color: white;
+}
+
+
+.module .items {
+    background: var(--brandname-text-color);
+    color: white;
+    min-width: 190px;
+    transition: background 0.5s, color 0.5s, transform 0.5s;
+    margin: 0px 6px 6px 0px;
+    padding: 15px 40px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.module .items:hover:before {
+    content: '';
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.module>menu>menuitem>.items+menu:after {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-top: 10px solid white;
+    left: 12px;
+    top: -40px;
+}
+
+.module menuitem>menu>menuitem>.items+menu:after {
+    content: '';
+    position: absolute;
+    border: 10px solid transparent;
+    border-left: 10px solid white;
+    top: 20px;
+    left: -180px;
+    transition: opacity 0.6, transform 0s;
+}
+
+.module>menu>menuitem>menu>span {
+    transition: transform 0.6s, opacity 0.6s;
+    transform: translateY(150%);
+    opacity: 0;
+    z-index: 20;
+}
+
+.module>menu>menuitem:hover>menu>span,
+.module>menu>menuitem.hover>menu>span {
+    transform: translateY(0%);
+    opacity: 1;
+}
+
+menuitem>menu>menuitem>menu>span {
+    transition: transform 0.6s, opacity 0.6s;
+    transform: translateX(195px) translateY(0%);
+    opacity: 0;
+}
+
+menuitem>menu>menuitem:hover>menu>span,
+menuitem>menu>menuitem.hover>menu>span {
+    transform: translateX(0) translateY(0%);
+    opacity: 1;
+}
+
+.module_attribute {
+    margin-top: 0px;
+    margin-left: -20px;
+}
+
+.module_att_desc {
+    margin-top: 0;
+}
+
+.module-less-visible {
+    opacity: 0.5;
+}
+
+
+
+#writing-mode table tr:not(:first-child) th {
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    display: inline-block;
+}
+
+#writing-mode table {
+    margin: auto;
+    padding: auto;
+    width: 60%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    font-family: var(--form-font);
+}
+
+#writing-mode td {
+    width: 40px;
+    border-right: 1px solid white;
+    text-align: center;
+    background-color: #a2c9ce;
+    height: 60px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#writing-mode th {
+    padding: 20px;
+    background-color: #4d95a2;
+    height: 60px;
+}
+
+#writing-mode input {
+    background-color: transparent;
+    border: 0px;
+    height: 100%;
+    width: 90%;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2;
+    font-family: var(--form-font);
+}
+
+#writing-mode input:hover {
+    background-color: #4d95a26b;
+}
+
+#writing-mode #inplast:hover {
+    border-bottom-right-radius: 30px;
+}
+
+#writing-mode #inplast:not(:hover) {
+    border-bottom-right-radius: 30px;
+}
+
+.module>menu>menu>span {
+    opacity: 0;
+}
+
+.module>menu>menuitem.cours menu span {
+    opacity: 0;
+}
+
+
+
+#writing-mode {
+    cursor: default;
+}
+
+#writing-mode table tr:first-of-type th {
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+#writing-mode table tr:not(:first-child) th {
+    -webkit-writing-mode: vertical-rl;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    display: inline-block;
+}
+
+#writing-mode table {
+    margin: auto;
+    padding: auto;
+    width: 60%;
+    table-layout: fixed;
+    border-collapse: collapse;
+
+}
+
+#writing-mode td {
+    width: 40px;
+    border-right: 1px solid white;
+    text-align: center;
+    background-color: #a2c9ce;
+    height: 60px;
+    font-weight: bold;
+    font-size: 18px;
+    font-family: monospace;
+}
+
+#writing-mode th {
+    font-family: var(--form-font);
+    padding: 20px;
+    background-color: #4d95a2;
+    height: 60px;
+}
+
+#writing-mode input {
+    background-color: transparent;
+    border: 0px;
+    height: 100%;
+    width: 90%;
+    text-transform: uppercase;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 2;
+    font-family: var(--form-font);
+}
+
+#writing-mode input:hover {
+    background-color: #4d95a26b;
+}
+
+#writing-mode #inplast:hover {
+    border-bottom-right-radius: 30px;
+}
+
+#writing-mode #inplast:not(:hover) {
+    border-bottom-right-radius: 30px;
+}
+
+#writing-mode tr:last-of-type th:first-of-type {
+    border-bottom-left-radius: 30px;
+}
+
+#writing-mode tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: 30px;
+}
+
+#writing-mode tr :last-child {
+    border-right: none;
+}

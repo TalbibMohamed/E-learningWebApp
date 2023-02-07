@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style/layoutPanel.css">
+    <link rel="stylesheet" href="/style/adminPanel.css">
+    <link rel="stylesheet" href="/style/teacherProfile.css">
+    <link rel="shortcut icon" href="/assets/Svg/Argia2.svg" type="image/x-icon">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <title>Profile</title>
+</head>
+
+<body>
+    <div th:if="${session.Person.role=='teacher'}">
+        <aside th:include="panels/fragments/teacherSideBar :: sidebar" class="sidenav">
+
+        </aside>
+    </div>
+    <div th:if="${session.Person.role=='admin'}">
+        <aside class="sidenav">
+            <div class="Profile-sidebar">
+                <span><img src="assets/userAssets/menprofile.jpg" alt=""></span>
+                <span th:text="${session.Person.username}"></span>
+                <span th:text="${session.Person.role}"></span>
+            </div>
+            <div class="Polygon-message">
+                <ul class="Ph-description">
+                    <li><span th:text="'First name : '+${session.Person.first_name}"></span> </li>
+                    <li><span th:text="'Last name : '+${session.Person.last_name}"></span></li>
+                    <li><span th:text="'Username : '+${session.Person.username}"></span> </li>
+                    <li><span th:text="'place of birth : '+${session.Person.place_of_birth}"></span> </li>
+                </ul>
+            </div>
+            <ul class="main-buttons">
+
+                <li>
+                    <img src="assets/icons/list.svg" alt="">
+                    Users
+                    <ul class="hidden">
+                        <li id="showUser" onclick="showUsers()">Show users</li>
+                        <li>Add user</li>
+                        <li>delete User</li>
+                        <li>Edit User </li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="assets/icons/course.svg" alt="">
+                    Courses
+                    <ul class="hidden">
+                        <li>Avalaible Courses</li>
+                        <li>recommend Courses</li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="assets/icons/schedule.svg" alt="">
+                    Scheduler
+                    <ul class="hidden">
+                        <li>show schedules</li>
+                        <li>add schedule</li>
+                        <li>delete schedule</li>
+                        <li>update schedule</li>
+                    </ul>
+                </li>
+                <li>
+                    <img src="assets/icons/groups.svg" alt="">
+                    Groups
+                    <ul class="hidden">
+                        <li>Join Group</li>
+                        <li>create group</li>
+                        <li>delete group</li>
+                    </ul>
+                </li>
+
+            </ul>
+        </aside>
+    </div>
+
+
+    <div class="darkmode-switch-box" onclick="switchmode()">
+        <label class="darkmode-switch">
+            <input id="darkmode-checkbox" type="checkbox" checked>
+            <div class="planet">
+            </div>
+            <div class="elements">
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+                <svg version="1.1" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="250" cy="250" r="200" />
+                </svg>
+            </div>
+        </label>
+        <span id="darkmode-label">switch to dark mode</span>
+    </div>
+    <header>
+        <div>
+            <img src="/assets/Svg/Argia2.svg">
+            <h1>Ai</h1>
+        </div>
+
+        <div class="button-box">
+            <div class="sub-box">
+                <button><a href="./logout">Logout</a></button>
+            </div>
+        </div>
+
+    </header>
+
+    <main>
+
+        <form action="/updateTeacher" method="post" modelAttribute="teacher" class="profile">
+            <div class="profile_details ">
+                <div>
+                    <input type="hidden" th:attr="value = ${teacher.id}" name="id">
+
+                    <div>
+                        <label for="First">First Name</label>
+                        <input name="first_name" id="FirstName_Addform" type="text" required
+                            th:attr="value = ${teacher.first_name}">
+                    </div>
+                    <div>
+                        <label for="Last">Last Name</label>
+                        <input name="last_name" id="LastName_Addform" type="text" required
+                            th:attr="value = ${teacher.last_name}">
+                    </div>
+                    <div>
+                        <label for="place_of_birth">place_of_birth</label>
+                        <input name="place_of_birth" id="Adress_Addform" type="text" required
+                            th:attr="value = ${teacher.place_of_birth}">
+                    </div>
+                    <div>
+                        <label for="date_of_birth">date_of_birth</label>
+                        <input name="date_of_birth" id="date_of_birth" type="date" required
+                            th:attr="value = ${teacher.date_of_birth}">
+                    </div>
+                    <div>
+                        <button>Update</button>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="Password">Password</label>
+                        <input name="password" id="Password_Addform" type="password" required
+                            th:attr="value = ${teacher.password}">
+                    </div>
+                    <div>
+                        <label for="CFPassword">Confirm Password</label>
+                        <input name="CFPassword" id="Password_AddformCf" type="password" required
+                            th:attr="value = ${teacher.password}">
+                    </div>
+                    <div>
+                        <label for="Username">Username</label>
+                        <input name="username" id="Phone_Addform" type="text" required
+                            th:attr="value = ${teacher.username}">
+                    </div>
+                    <div th:switch="${session.Person.role}">
+                        <div class="teacher_info" th:case="teacher">
+                            <label>Grade</label>
+                            <input type="text" th:attr="value = ${teacher.degree}" disabled>
+                            <label>Hiring_date</label>
+                            <input type="date" th:attr="value = ${teacher.hiringDate}" disabled>
+                        </div>
+                        <div class="teacher_info" th:case="admin">
+                            <label>Grade</label>
+                            <input type="text" th:attr="value = ${teacher.degree}" name="teacher_grade">
+                            <label>Hiring_date</label>
+                            <input type="date" th:attr="value = ${teacher.hiringDate}" name="hiring_date">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </form>
+        <div class="display_teaching_info" th:switch="${session.Person.role}">
+            <div th:case="admin">
+                <div class="teach_maj">
+                    <div>
+                        <button onclick="ShowAddForm()"><img src="assets/icons/assignment-add.svg" width="50px"
+                                alt=""></button>
+                    </div>
+                    <div class="table-wrapper order-table">
+                        <table class="fl-table order-table ">
+                            <thead>
+                                <th class="action0"> Level</th>
+                                <th> Class</th>
+                                <th class="action"> Course</th>
+                                <th></th>
+                            </thead>
+                            <tbody>
+                                <tr th:each=" teach: ${teachingInfo}" class="teacherTR">
+                                    <td th:text="${teach.level}" id="teachingLevel"></td>
+                                    <td th:text="${teach.teachingClass}" id="teachingClass"></td>
+                                    <td th:text="${teach.course_name}" id="teachingCourse"></td>
+                                    <td> <button id="deleteWorkAssignment" onclick="hundle_delete()"><img
+                                                src="assets/icons/user-delete.svg" width="30px" alt=""
+                                                srcset=""></button>
+                                        <button id="editWorkAssignment" onclick="hundle_update()"
+                                            onmouseenter="just_hundle()"><img src="assets/icons/user-update.svg"
+                                                width="30px" alt="" srcset=""></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <form action="/updateTeachingInfo" method="post" class="teacherAssignment">
+                        <img src="assets/icons/close.svg" width="40px" onclick="closeform()" alt="" srcset="">
+                        <div style="display: none;" class="forForm">
+                            <input type="hidden" name="old_level" class="old_level">
+                            <input type="hidden" name="old_class" class="old_class">
+                            <input type="hidden" name="old_course" class="old_course">
+                            <input type="hidden" name="id" class="updatingTeacherID" th:attr="value = ${teacher.id}">
+                        </div>
+
+                        <div class="dropD2 sortLevel">
+                            <label for="sort">level</label>
+                            <select name="sort" id="sort_level" onchange="update_sort_level()">
+                                <option value="L3">L3</option>
+                                <option value="L2">L2</option>
+                                <option value="L1">L1</option>
+                            </select>
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP1</label>
+                                <input type="radio" name="class_list" id="grp1" value="grp1">
+                            </div>
+                            <div class="dropD2 sortCourse" th:with="level=3">
+                                <label for="sort">Courses</label>
+                                <select name="sort" id="sort_courses_grp1">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_courses" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_courses" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" id="course_grp1" name="course_grp1">
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP2</label>
+                                <input type="radio" name="class_list" id="grp2" value="grp2">
+                            </div>
+                            <div class="dropD2 ">
+                                <label for="sort">Courses</label>
+                                <select name="sort" id="sort_courses_grp2">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_courses" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_courses" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" id="course_grp2" name="course_grp2">
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP3</label>
+                                <input type="radio" name="class_list" id="grp3" value="grp3">
+                            </div>
+                            <div class="dropD2 ">
+                                <label for="sort">Courses</label>
+
+                                <select name="sort" id="sort_courses_grp3">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_courses" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_courses" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" id="course_grp3" name="course_grp3">
+                        </div>
+                        <input type="hidden" name="teaching_level" id="teaching_level">
+                        <button type="submit">Update </button>
+                    </form>
+                    <form action="/deleteAssignment" methode="get" class="deleteAssignment">
+                        <img src="assets/icons/close.svg" width="40px" onclick="closeform()" alt="" srcset="">
+                        <p>do you want to delete this teaching class </p>
+                        <div class="forForm">
+                            <input type="text" name="old_level" class="old_level">
+                            <input type="text" name="my_class" class="old_class">
+                            <input type="text" name="course" class="old_course">
+                            <input type="hidden" name="id" class="updatingTeacherID" th:attr="value = ${teacher.id}">
+                        </div>
+                        <button type="submit"> delete</button>
+                    </form>
+
+
+                    <form action="/AddTeachingInfo" method="post" class="AddAssignment">
+                        <div>
+                            <img src="assets/icons/close.svg" width="40px" onclick="closeform()" alt="" srcset="">
+                        </div>
+                        <div class="dropD2 sortLevel">
+                            <label for="sort">level</label>
+                            <select name="sort" id="sort_levelV2" onchange="update_sort_levelV2()">
+                                <option value="L3">L3</option>
+                                <option value="L2">L2</option>
+                                <option value="L1">L1</option>
+                            </select>
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP1</label>
+                                <input type="checkbox" name="class_list" class="grp1" value="grp1">
+                            </div>
+                            <div class="dropD2 sortCourse" th:with="level=3">
+                                <label for="sort">Courses</label>
+                                <select name="sort" class="sort_courses_grp1">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_coursesV2" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_coursesV2" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" class="course_grp1" name="course_grp1">
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP2</label>
+                                <input type="checkbox" name="class_list" class="grp2" value="grp2">
+                            </div>
+                            <div class="dropD2 ">
+                                <label for="sort">Courses</label>
+                                <select name="sort" class="sort_courses_grp2">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_coursesV2" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_coursesV2" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" class="course_grp2" name="course_grp2">
+                        </div>
+                        <div class="grp">
+                            <div>
+                                <label for="">GRP3</label>
+                                <input type="checkbox" name="class_list" class="grp3" value="grp3">
+                            </div>
+                            <div class="dropD2 ">
+                                <label for="sort">Courses</label>
+
+                                <select name="sort" class="sort_courses_grp3">
+                                    <div th:each="course : ${L3_courses}">
+                                        <option class="l3_coursesV2" th:attr="value = ${course.label}"
+                                            th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                    <div th:each="course : ${L2_courses}">
+                                        <option class="l2_coursesV2" style="display: none;"
+                                            th:attr="value = ${course.label}" th:text="${course.label}">
+                                        </option>
+                                    </div>
+                                </select>
+                            </div>
+                            <input type="hidden" class="course_grp3" name="course_grp3">
+                        </div>
+                        <input type="hidden" name="teaching_level" id="teaching_levelV2">
+                        <input type="hidden" name="id_teacher" th:attr="value = ${teacher.id}">
+
+                        <button type="submit" onmouseover="AddingTeachInfo()">Add </button>
+                    </form>
+                </div>
+            </div>
+            <div th:case="teacher">
+                <div class="table-wrapper order-table">
+                    <table class="fl-table order-table ">
+                        <thead>
+                            <th class="action0"> Level</th>
+                            <th> Class</th>
+                            <th class="action"> Course</th>
+                            <th></th>
+                        </thead>
+
+                        <tbody style="height: max-content; overflow: hidden; margin-bottom: 40px;">
+                            <tr th:each=" teach: ${teachingInfo}">
+                                <td th:text="${teach.level}"></td>
+                                <td th:text="${teach.teachingClass}"></td>
+                                <td th:text="${teach.course_name}"></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+    <footer>
+        <div> <span> &copy; </span> Ai </div>
+        <img src="/assets/icons/up-arrow.svg" alt="" onclick="viewdetails()">
+        <section class="details">
+            <ul class="social-media">
+                <li class="icon facebook">
+                    <span class="tooltip">Facebook</span>
+                    <span><i class="fab fa-facebook-f"></i></span>
+                </li>
+                <li class="icon twitter">
+                    <span class="tooltip">Twitter</span>
+                    <span><i class="fab fa-twitter"></i></span>
+                </li>
+                <li class="icon instagram">
+                    <span class="tooltip">Instagram</span>
+                    <span><i class="fab fa-instagram"></i></span>
+                </li>
+                <li class="icon github">
+                    <span class="tooltip">Github</span>
+                    <span class="span"><i class="fab fa-github"></i></span>
+                </li>
+                <li class="icon youtube">
+                    <span class="tooltip">Youtube</span>
+                    <span><i class="fab fa-youtube"></i></span>
+                </li>
+            </ul>
+            <ul class="more-details">
+                <span>Ali menjeli ,Constantine ,Algeria</span>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>+21355487456</span>
+                <i class="fas fa-phone"></i>
+            </ul>
+        </section>
+    </footer>
+    <script src="/scripts/darkmode.js"></script>
+    <script src="/scripts/profileDetails.js"></script>
+    <!-- <script src="/scripts/Admin.js"></script> -->
+    <script src="/scripts/footer.js"></script>
+    <script src="/scripts/Prof.js"></script>
+    <script src="/scripts/teacherProfile.js"></script>
+</body>
+
+</html>

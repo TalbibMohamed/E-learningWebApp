@@ -1,0 +1,319 @@
+.table-wrapper {
+    background-color: transparent;
+    font-family: var(--form-font);
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    color: var(--text-color);
+    height: 68vh;
+    overflow-y: scroll;
+}
+
+table {
+    border-radius: 20px;
+}
+
+.fl-table button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.fl-table {
+    width: 80%;
+    margin: auto;
+    font-size: 12px;
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+.fl-table th {
+    letter-spacing: 3px;
+}
+
+.fl-table td,
+.fl-table th {
+    text-align: center;
+    padding: 10px;
+    background-color: var(--table-background-color);
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 20px;
+}
+
+.fl-table tr :nth-last-child(1) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background-color: transparent;
+    border-right: none;
+}
+
+/* .fl-table tbody tr :nth-child(4) {
+    border-right: none;
+} */
+
+
+.fl-table thead th {
+    font-weight: bolder;
+    font-size: 20px;
+    color: #ffffff;
+    background: var(--brandname-text-color);
+}
+
+.fl-table thead :nth-child(4) {
+    border-top-right-radius: 20px;
+}
+
+.fl-table thead th:nth-of-type(4) {
+    width: 13%;
+}
+
+.fl-table thead th:nth-of-type(1),
+.fl-table thead th:nth-of-type(2) {
+    width: 25%;
+}
+
+
+
+/* .fl-table tbody:last-child>tr:last-of-type>td:nth-child(3) {
+    border-bottom-right-radius: 20px;
+}
+
+.fl-table tbody:last-child>tr:last-of-type>td:nth-child(1) {
+    border-bottom-left-radius: 20px;
+} */
+
+.action0 {
+    border-top-left-radius: 20px;
+}
+
+.fl-table tbody>tr:last-of-type>td:nth-child(3) {
+    border-bottom-right-radius: 20px;
+}
+
+.fl-table tbody>tr:last-of-type>td:nth-child(1) {
+    border-bottom-left-radius: 20px;
+}
+
+.action {
+    border-top-right-radius: 20px;
+    background-color: var(--background-color);
+    height: 40px;
+}
+
+.fl-table tbody a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.deletePopup form button,
+.add_file form input[type=submit] {
+    text-decoration: none;
+    font-family: var(--form-font);
+    width: var(--form-button-width);
+    padding: 0px;
+    font-size: 22px;
+    background: transparent;
+    border: whitesmoke 3px solid;
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+    transform: scale(1);
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    margin-left: 30%;
+    margin-bottom: 20px;
+    color: aliceblue;
+
+}
+
+/* .add_file form input[type=submit] {
+    color: var(--text-color);
+    border: var(--text-color) 3px solid;
+} */
+
+/* .deletePopup form {
+    width: fit-content;
+    font-size: 22px;
+    font-family: koulen;
+    letter-spacing: 4px;
+} */
+.deletePopup {
+    font-family: var(--form-font);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: auto;
+    background-color: var(--brandname-text-color);
+    width: 600px;
+    padding-top: 20px;
+    border: 8px solid var(--side-background);
+    border-radius: 40px;
+    position: absolute;
+    z-index: +10001;
+    top: 35%;
+    left: 28%;
+    box-shadow: 0 0 120px 10px rgba(0, 0, 0, 0.59);
+    transform: scale(0);
+    transition: all 400ms ease;
+    pointer-events: all;
+    color: #fff;
+    letter-spacing: 2px;
+    font-size: 22px;
+}
+
+
+.deletePopup form button:hover,
+.add_file form input[type=submit]:hover {
+    background-color: var(--hover-links-color);
+    color: white;
+    border-color: white;
+    transition: all 0.3s;
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
+.delete_file {
+    background-color: var(--brandname-text-color);
+    position: absolute;
+    width: 400px;
+    height: 100px;
+    border-radius: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+}
+
+.deletePopup img {
+    cursor: pointer;
+    width: 40px;
+    position: absolute;
+    right: 12px;
+    top: 10px;
+}
+
+/* end Table list section */
+/* add file section  */
+.add_file {
+    background-color: var(--brandname-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 20vw;
+    font-size: 22px;
+    letter-spacing: 2px;
+    font-family: koulen;
+    font-weight: 200;
+    margin: auto;
+    padding: 20px;
+    border-radius: 40px;
+    color: white;
+}
+
+.add_file .CourseType {
+    display: flex;
+    flex-direction: column;
+}
+
+.add_file .CourseType>div {
+    display: inline-flex
+}
+
+.add_file .CourseType>div div {
+    margin: auto;
+}
+
+.add_file form input[type=text] {
+    margin-top: 12px;
+    padding: 15px;
+    max-width: 200px;
+    height: 10px;
+    border-radius: 15px;
+    border-color: transparent;
+    color: var(--brandname-text-color);
+    background-color: white;
+    font-size: 16px;
+    position: relative;
+    font-family: koulen;
+    letter-spacing: 4px;
+}
+
+.add_file>p {
+    font-size: 24;
+    font-weight: 600;
+    text-align: center;
+}
+
+.drop-down {
+    position: relative;
+    width: fit-content;
+    font-size: 30px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.drop-down label {
+    color: white;
+    font-size: 22px;
+
+}
+
+.drop-down select {
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: transparent;
+    border: transparent;
+    color: rgb(31, 214, 153);
+    align-items: center;
+    border-radius: 0;
+    font-size: 20px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.drop-down select option {
+    font-size: 20px;
+    font-family: koulen;
+    background-color: var(--brandname-text-color);
+}
+
+/* file input */
+.add_file form input[type=file] {
+    opacity: 1;
+    pointer-events: all;
+    position: absolute;
+    top: 24%;
+    opacity: 0;
+    left: 0%;
+}
+
+.add_file form img {
+    width: 30px;
+    position: relative;
+    top: 9px;
+}
+
+.add_file form .file label:last-of-type {
+    color: var(--side-background);
+    position: relative;
+    top: 1px;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.file {
+    pointer-events: all;
+    cursor: pointer;
+
+}

@@ -1,0 +1,306 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.profile_details {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+.col {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+
+}
+
+.col .d2 {
+    margin: 0 12px;
+}
+
+/* .dropD2 {
+    color: ;
+} */
+
+.teacher_info {
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.sortLevel {
+    margin: auto;
+
+}
+
+.teacherAssignment {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    transform: scale(0);
+    transition: all 0.46s;
+    border-radius: 20px;
+    padding: 50px;
+    width: 400px;
+    height: 300px;
+    box-shadow: 0 0 120px 10px rgb(0 0 0 / 59%);
+    left: 28vw;
+    background-color: var(--brandname-text-color);
+}
+
+.teacherAssignment label {
+    color: aliceblue;
+}
+
+.teacherAssignment>button,
+.deleteAssignment>button,
+.AddAssignment>button {
+    text-decoration: none;
+    font-family: var(--form-font);
+    width: var(--form-button-width);
+    padding: 0px;
+    font-size: 22px;
+    background: transparent;
+    border: whitesmoke 3px solid;
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+    transform: scale(1);
+    text-align: center;
+    margin: auto;
+    margin-top: 20px;
+    color: aliceblue;
+}
+
+.teacherAssignment>button:hover,
+.deleteAssignment>button:hover,
+.AddAssignment>button:hover {
+    background-color: var(--hover-links-color);
+    color: white;
+    border-color: white;
+    transition: all 0.3s;
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
+.teacherAssignment2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.grp {
+    width: 100%;
+    display: flex;
+    margin: auto;
+    padding: 0%;
+    align-items: center;
+    justify-content: space-evenly;
+    font-family: 'koulen';
+}
+
+.dropD2 {
+    width: fit-content;
+    font-size: 30px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.dropD2 label,
+.grp>div {
+    color: azure;
+    font-size: 23px;
+    font-weight: 600;
+
+}
+
+
+.dropD2 select {
+    border-radius: 20px;
+    text-align: center;
+    font-weight: bolder;
+    background-color: transparent;
+    border: transparent;
+    color: rgb(31, 214, 153);
+    align-items: center;
+    border-radius: 0;
+    font-size: 20px;
+    font-family: koulen;
+    letter-spacing: 4px;
+
+}
+
+.dropD2 select option {
+    font-size: 20px;
+    font-family: koulen;
+    background-color: var(--background-color);
+}
+
+.deleteAssignment {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transform: scale(0);
+    width: 300px;
+    position: absolute;
+    left: 40%;
+    top: 80%;
+    box-shadow: 0 0 120px 10px rgb(0 0 0 / 59%);
+    transition: all 0.4s;
+    background-color: var(--brandname-text-color);
+    padding: 30px;
+    border-radius: 20px;
+    font-family: koulen;
+    color: white;
+    letter-spacing: 2px;
+    font-size: 20px;
+
+
+}
+
+.teach_maj>div>button {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 10%;
+}
+
+.teach_maj>div img {
+    cursor: pointer;
+}
+
+.AddAssignment {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    transform: scale(0);
+    transition: all 0.46s;
+    border-radius: 20px;
+    padding: 50px;
+    width: 400px;
+    height: 300px;
+    box-shadow: 0 0 120px 10px rgb(0 0 0 / 59%);
+    left: 28vw;
+    background-color: var(--brandname-text-color);
+    color: aliceblue;
+}
+
+.forForm {
+    display: none;
+}
+
+.teach_maj {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* transform: scale(0); */
+}
+
+
+
+
+
+.profile_details {
+    display: flex;
+    flex-direction: row;
+    border-radius: 40px;
+    z-index: +14;
+    top: 6%;
+    left: 28%;
+}
+
+.profile_details input {
+    margin-top: 12px;
+    padding: 20px;
+    max-width: 200px;
+    height: 20px;
+    border-radius: 20px;
+    border-color: transparent;
+    color: var(--brandname-text-color);
+    background-color: white;
+    font-size: 16px;
+    position: relative;
+    font-family: koulen;
+    letter-spacing: 4px;
+}
+
+.profile_details div div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.profile {
+    color: whitesmoke;
+    font-family: var(--form-font);
+    flex-wrap: wrap;
+    justify-items: center;
+    margin: auto;
+    background-color: var(--brandname-text-color);
+    border-radius: 40px;
+    z-index: +14;
+    top: 6%;
+    left: 28%;
+    display: flex;
+    flex-direction: column;
+    width: 32vw;
+    height: 600px;
+}
+
+.profile button {
+    text-decoration: none;
+    font-family: var(--form-font);
+    width: var(--form-button-width);
+    padding: 0px;
+    font-size: 22px;
+    background: transparent;
+    border: whitesmoke 3px solid;
+    color: whitesmoke;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+    transform: scale(1);
+    text-align: center;
+}
+
+.profile button:hover {
+    background-color: var(--hover-links-color);
+    color: white;
+    border-color: white;
+    transition: all 0.3s;
+    transform: scale(0.95);
+    transform-origin: center;
+}
+
+.profile>div:nth-child(2) {
+    margin: auto;
+}
+
+body>main>form>div.profile_details>div:nth-child(1) {
+    margin-right: 30px;
+}
+
+body>main>form>div.profile_details>div:nth-child(2) {
+    margin-left: 30px;
+}
+
+body>main>form>div>div:nth-child(1)>div:nth-child(6) {
+    padding-top: 50px;
+    align-items: center;
+}
+
+.fl-table tbody tr td:nth-of-type(3) {
+    border-right: none;
+}
+
+.fl-table tbody tr:last-of-type td:nth-of-type(3) {
+    border-bottom-right-radius: 20px;
+}

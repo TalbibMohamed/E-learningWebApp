@@ -1,0 +1,812 @@
+:root {
+    /* COLORS */
+    --text-color: #676767;
+    --border-color: #31aec5;
+    --side-background: #445b65;
+    --background-color:
+        /* #ecf8fe */
+        #d7f3f8
+        /*#c6ebfc*/
+    ;
+    --brandname-text-color: #4d95a2;
+    --hover-links-color: #ff8a00;
+    --polygon-color: #C47AFF;
+    --searchInput: rgba(111, 108, 108, 0.1);
+    --search-button: rgb(163, 162, 162);
+    --table-background-color: #b9e3e9;
+
+    /*DARK MODE SWITCH*/
+    --bg-planet-bright: #F2C94C;
+    --bg-planet-shadow: #828894;
+    --bg-planet-lightshadow: #D7D7D820;
+    --dot-size: 0.25rem;
+    --background-drk: rgb(11, 11, 27);
+
+    /*LAYOUT*/
+    --form-button-width: 150px;
+
+    /*FONTS*/
+    --form-font: koulen;
+    --brand-font: aleovera;
+}
+
+:root.darkmode {
+    /* DARKMODE COlORS */
+    --searchInput: rgba(240, 227, 227, 0.1);
+    --search-button: rgb(255, 255, 255);
+    --table-background-color: #569097;
+    --side-background: white;
+    --text-color: #e6e6e6;
+    --border-color: #41dada;
+    /*represents border+text color of form */
+    --form-background: linear-gradient(225deg, #255265, #007986);
+    --form-shadow: #253f4c;
+    --background-color: #0f4e59;
+    --brandname-text-color: #1aa7a7;
+    /*change color*/
+    --hover-links-color: #e88b22;
+}
+
+
+/*-------------------------------------------------SCROLL BAR -----------------------------------*/
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-button {
+    width: 8px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border: none;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #7d7d7d;
+}
+
+/*-------------------------------------------------FONTS-----------------------------------------*/
+
+
+@font-face {
+    font-family: aleovera;
+    src: url(/assets/Fonts/Aloevera-OVoWO.ttf);
+}
+
+@font-face {
+    font-family: koulen;
+    src: url(/assets/Fonts/Koulen-Regular.ttf);
+}
+
+/*------------------------------------------- BODY ----------------*/
+
+body {
+    margin: 0;
+    background-color: var(--background-color);
+    transition: all 400MS ease;
+}
+
+/*------------------------------DARKMODE SWITCH ---------------------------*/
+
+
+@keyframes span-show {
+    0% {
+        letter-spacing: -0.4em;
+        opacity: 0;
+    }
+
+    40% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes span-hide {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        letter-spacing: -0.4em;
+        opacity: 0;
+    }
+}
+
+.darkmode-switch-box {
+    position: absolute;
+    margin-top: 0px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 13vw;
+    margin-left: 50px;
+    top: 30px;
+    z-index: 10;
+    font-family: var(--form-font);
+}
+
+.darkmode-switch-box span {
+    /*label for button */
+    position: fixed;
+    left: 13vw;
+    margin-left: 95px;
+    letter-spacing: normal;
+    margin-top: 3px;
+    opacity: 0;
+    pointer-events: none;
+    font-size: 1.4em;
+    color: var(--text-color);
+    animation: both span-hide 400ms;
+}
+
+.darkmode-switch-box:hover span {
+    animation: both span-show 400ms;
+    transform: scale(1);
+}
+
+.darkmode-switch {
+    width: 50px;
+    cursor: pointer;
+    position: relative;
+}
+
+.darkmode-switch input[type="checkbox"] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+    position: absolute;
+}
+
+.darkmode-switch .planet {
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    overflow: hidden;
+    background: radial-gradient(3.75em, 99%, transparent 100%);
+    background-color: var(--bg-planet-bright);
+    background-repeat: no-repeat;
+    position: relative;
+    transition: all 400ms ease;
+}
+
+.darkmode-switch .planet::after {
+    content: "";
+    background-color: var(--bg-planet-shadow);
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    border-radius: 50%;
+    will-change: opacity, transform, background-color;
+    opacity: 0;
+    transform: translate(2em, -2em);
+    transition: opacity 400ms ease, transform 400ms ease, background-color 400ms ease;
+}
+
+.darkmode-switch .elements {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: -19.5px;
+    left: -20.5px;
+    transition: transform 400ms ease;
+}
+
+.darkmode-switch .elements svg {
+    position: absolute;
+    width: 7px;
+    height: 7px;
+    opacity: 1;
+    transition: transform 400ms ease, opacity 200ms ease, width 200ms ease, height 200ms ease;
+}
+
+.darkmode-switch .elements svg circle {
+    fill: var(--bg-planet-bright);
+    transition: fill 400ms ease;
+}
+
+.darkmode-switch .elements svg:first-child {
+    transform: translate(1.8em, 0.50em);
+}
+
+.darkmode-switch .elements svg:nth-child(2) {
+    transform: translate(2.7em, 0.9em);
+}
+
+.darkmode-switch .elements svg:nth-child(3) {
+    transform: translate(3em, 1.8em);
+}
+
+.darkmode-switch .elements svg:nth-child(4) {
+    transform: translate(2.7em, 2.6em);
+}
+
+.darkmode-switch .elements svg:nth-child(5) {
+    transform: translate(1.8em, 3em);
+}
+
+.darkmode-switch .elements svg:nth-child(6) {
+    transform: translate(0.9em, 2.6em);
+}
+
+.darkmode-switch .elements svg:nth-child(7) {
+    transform: translate(0.6em, 1.8em);
+}
+
+.darkmode-switch .elements svg:nth-child(8) {
+    transform: translate(0.8em, 0.85em);
+}
+
+.darkmode-switch input:checked+.planet {
+    --bg-planet-bright: #D7D7D8;
+}
+
+.darkmode-switch input:checked+.planet::after {
+    opacity: 1;
+    transform: translate(0.6em, -0.5em);
+}
+
+.darkmode-switch input:checked~.elements {
+    transform: rotate(180deg);
+}
+
+.darkmode-switch input:checked~.elements svg:first-child {
+    transform: translate(2em, 1em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(2) {
+    transform: translate(3em, 1.5em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(3) {
+    transform: translate(3em, 2em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(4) {
+    transform: translate(3em, 2em);
+    opacity: 0;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(5) {
+    transform: translate(1.9em, 2.6em);
+    width: 0.3em;
+    height: 0.3em;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(5) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(6) {
+    transform: translate(1.4em, 2.5em);
+    width: 0.3em;
+    height: 0.3em;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(6) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(7) {
+    transform: translate(1.1em, 1.6em);
+    width: 0.7em;
+    height: 0.7em;
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(7) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(8) {
+    width: 0.45em;
+    height: 0.45em;
+    transform: translate(1.7em, 2.1em);
+}
+
+.darkmode-switch input:checked~.elements svg:nth-child(8) circle {
+    fill: var(--bg-planet-lightshadow);
+}
+
+/*----------------------------------END DARKMODE SWITCH--------------------------------*/
+
+
+/* ---------------------------------HEADER-------------------------------*/
+
+header {
+    position: absolute;
+    width: 87vw;
+    margin: auto;
+    left: 13vw;
+    display: flex;
+    justify-content: center;
+    cursor: default;
+}
+
+header div {
+    display: flex;
+    margin-left: 15px;
+    margin-top: 8px;
+    font-family: aleovera;
+}
+
+header img {
+    width: 70px;
+}
+
+
+@keyframes textclip {
+    to {
+        background-position: 200% center;
+    }
+}
+
+header h1 {
+    width: 155px;
+    height: 70px;
+    margin: 10px 0 0 10px;
+    font-family: var(--brand-font);
+    font-weight: lighter;
+    font-size: 40px;
+    background-image: linear-gradient(to left, #31aec5 0%, #971bfe 40%, #ff8a00 70%, #61dc36 90%, #31aec5 100%);
+    background-size: auto auto;
+    background-clip: border-box;
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textclip 12s linear infinite;
+    animation-fill-mode: backwards;
+    animation-delay: 5s;
+}
+
+
+.button-box {
+    display: flex;
+    justify-content: center;
+}
+
+header .sub-box {
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    color: var(--border-color);
+    z-index: 1;
+}
+
+.sub-box::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    top: -7px;
+    left: -7px;
+    z-index: -5;
+    border-top: 3px solid var(--border-color);
+    border-left: 3px solid var(--border-color);
+    transition: 0.5s;
+    border-top-left-radius: 15px;
+}
+
+.sub-box::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    bottom: -7px;
+    right: -7px;
+    z-index: -5;
+    border-right: 3px solid var(--border-color);
+    border-bottom: 3px solid var(--border-color);
+    transition: 0.5s;
+    border-bottom-right-radius: 15px;
+}
+
+.sub-box:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.sub-box:hover::after {
+    width: 100%;
+    height: 100%;
+}
+
+.sub-box button {
+    font-family: var(--form-font);
+    width: var(--form-button-width);
+    padding: 0px;
+    font-size: 22px;
+    background: transparent;
+    border: var(--text-color) 3px solid;
+    color: var(--text-color);
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s;
+    transform: scale(1);
+
+}
+
+.sub-box a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.sub-box a:hover {
+
+    color: white;
+}
+
+
+
+/*-----------------------------------END HEADER -----------------------------*/
+
+/*----------------------------------  SIDEBAR -----------------------------------*/
+
+aside {
+    position: absolute;
+    left: 0;
+    width: 13vw;
+    height: 95vh;
+    bottom: 2.5vh;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    font-family: var(--form-font);
+}
+
+.sidenav {
+    background-color: var(--brandname-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: auto;
+
+}
+
+.sidenav li img {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 25px;
+    margin-top: -7px;
+}
+
+.sidenav li img[src="../icons/schedule.svg"] {
+    height: 25px;
+}
+
+.sidenav .main-buttons {
+    list-style-type: none;
+    padding: 0;
+    color: #fff;
+    margin-bottom: 500px;
+}
+
+.sidenav .main-buttons li {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    transition: all .2s;
+}
+
+.sidenav .main-buttons li {
+    padding: 16px 52px;
+}
+
+.sidenav .main-buttons li:hover,
+
+.sidenav .main-buttons li:active,
+
+.sidenav .main-buttons li:focus {
+    background-color: var(--hover-links-color);
+    cursor: pointer;
+}
+
+.sidenav .main-buttons li:hover .hidden,
+.sidenav .main-buttons li:active .hidden,
+.sidenav .main-buttons li:focus .hidden {
+    width: 300px;
+    transition: all 0.6s;
+}
+
+
+
+.sidenav .hidden {
+    transform: translateY(-96px);
+    width: 0px;
+    height: fit-content;
+    padding: 64px 0;
+    position: absolute;
+    left: 13vw;
+    overflow: hidden;
+    list-style-type: none;
+    background-color: var(--brandname-text-color);
+    transition: 0.3s;
+    z-index: 12;
+    margin-left: 10px;
+    border-radius: 20px;
+}
+
+.sidenav .hidden li {
+    inline-size: 218px;
+    padding: 16px 24px;
+}
+
+.sidenav .hidden li:hover,
+.sidenav .hidden li:active,
+.sidenav .hidden li:focus {
+    background-color: var(--hover-links-color);
+}
+
+
+/* profile navbar description */
+.Profile-sidebar {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;
+    min-height: 200px;
+    cursor: pointer;
+    width: 13vw;
+}
+
+.Profile-sidebar span img {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 80px;
+    border: 3px var(--brandname-text-color) solid;
+}
+
+.Profile-sidebar span {
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+}
+
+.Polygon-message {
+    position: absolute;
+    top: 8%;
+    width: fit-content;
+    left: 260px;
+    background-color: var(--polygon-color);
+    z-index: 10;
+    padding-right: 30px;
+    border-radius: 20px;
+    transform: scale(0) translateX(-50px);
+    transition: all 0.3s;
+    transform-origin: top left;
+    width: max-content;
+}
+
+.Polygon-message2 {
+    transform: scale(1) translateX(0);
+}
+
+
+.Ph-description {
+    color: white;
+    margin-left: 0px;
+    list-style-type: none;
+    font-size: 20px;
+}
+
+
+
+/*---------------------------------- END SIDEBAR -----------------------------------*/
+
+/*-----------------------------------------MAIN ----------------------------------*/
+
+main {
+    position: absolute;
+    margin-left: 2.5vw;
+    width: 82vw;
+    left: 13vw;
+    top: 100px;
+    height: calc(100vh - 165px);
+    overflow-y: overlay;
+}
+
+/*---------------------------------------MAIN CONTENT --------------------------*/
+
+/*diffrent from panel to panel*/
+
+/*------------------------------------------------END MAIN CONTENT ----------------------------*/
+
+
+/*------------------------------------------------END MAIN----------------------*/
+
+
+/*--------------------------------------------FOOTER-----------------------*/
+footer {
+    position: absolute;
+    width: 83vw;
+    left: 13vw;
+    bottom: 5px;
+    height: 52px;
+    border-radius: 20px;
+    bottom: 2.5vh;
+    cursor: default;
+    background-color: var(--brandname-text-color);
+    transition: all 0.4s;
+    font-family: koulen;
+    overflow: hidden;
+    margin-left: 2vw;
+    z-index: 10;
+}
+
+footer div {
+    color: var(--background-color);
+    text-align: center;
+    font-family: aleovera;
+    font-weight: 400;
+    font-size: 40px;
+    margin-bottom: 5px;
+}
+
+footer div span {
+    position: relative;
+    top: 2px;
+}
+
+footer img {
+    position: relative;
+    transition: all 300ms;
+    cursor: pointer;
+    width: 40px;
+    bottom: 45px;
+    left: 70px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-around;
+}
+
+.more-details {
+    display: inline-flex;
+}
+
+.more-details span {
+    transition: all 400ms;
+    transform: scale(0);
+    color: var(--background-color);
+    margin-top: 15px;
+    font-size: 1.3em;
+    transform-origin: bottom right;
+}
+
+.social-media {
+    display: inline-flex;
+    list-style: none;
+}
+
+.social-media .icon,
+.more-details i {
+    transition: all 500ms;
+    transform: scale(0);
+    transform-origin: bottom;
+    position: relative;
+    background: var(--background-color);
+    color: var(--text-color);
+    border-radius: 50%;
+    padding: 10px;
+    margin: 10px;
+    width: 25px;
+    height: 25px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+footer .social-media .icon span:nth-of-type(2) {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.social-media .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 20px;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-media .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-media .icon:hover .tooltip {
+    top: -55px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.social-media .icon:hover span,
+.social-media .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.social-media .facebook:hover,
+.social-media .facebook:hover .tooltip,
+.social-media .facebook:hover .tooltip::before {
+    background: #1877F2;
+    color: #ffffff;
+}
+
+.social-media .twitter:hover,
+.social-media .twitter:hover .tooltip,
+.social-media .twitter:hover .tooltip::before {
+    background: #1DA1F2;
+    color: #ffffff;
+}
+
+.social-media .instagram:hover,
+.social-media .instagram:hover .tooltip,
+.social-media .instagram:hover .tooltip::before {
+    background: #E4405F;
+    color: #ffffff;
+}
+
+.social-media .github:hover,
+.social-media .github:hover .tooltip,
+.social-media .github:hover .tooltip::before {
+    background: #333333;
+    color: #ffffff;
+}
+
+.social-media .youtube:hover,
+.social-media .youtube:hover .tooltip,
+.social-media .youtube:hover .tooltip::before {
+    background: #CD201F;
+    color: #ffffff;
+}
+
+/*--------------------------------------------END FOOTER-----------------------*/
